@@ -1,0 +1,1829 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Portfolio Management</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html" class="active">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active" data-tab="ringkasan">
+            <i class="fas fa-chart-pie"></i>
+            <span>Ringkasan</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="rebalancing">
+            <i class="fas fa-balance-scale"></i>
+            <span>Rebalancing</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="risiko">
+            <i class="fas fa-shield-alt"></i>
+            <span>Analisis Risiko</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="pajak">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Optimasi Pajak</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="performa">
+            <i class="fas fa-history"></i>
+            <span>Performa</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Tab: Ringkasan (Summary) -->
+        <div class="tab-panel active" data-panel="ringkasan">
+          <!-- Portfolio Value Summary -->
+          <div class="portfolio-hero glass-panel">
+            <div class="portfolio-value-main">
+              <div class="value-label">Total Nilai Portofolio</div>
+              <div class="value-amount">Rp 1,245,850,000</div>
+              <div class="value-change text-buy">
+                <i class="fas fa-arrow-up"></i> +Rp 45,200,000 (+3.76%) hari ini
+              </div>
+            </div>
+            <div class="portfolio-metrics">
+              <div class="metric-box">
+                <div class="metric-label">P/L Belum Terealisasi</div>
+                <div class="metric-value text-buy">+Rp 125,400,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">P/L Terealisasi (YTD)</div>
+                <div class="metric-value text-buy">+Rp 78,500,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Saldo Kas</div>
+                <div class="metric-value">Rp 245,000,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Buying Power</div>
+                <div class="metric-value">Rp 490,000,000</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk & Performance Grid -->
+          <div class="portfolio-grid">
+            <!-- Risk Metrics -->
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-shield-alt"></i>
+                <span>Metrik Risiko</span>
+              </div>
+              <div class="risk-metrics-grid">
+                <div class="risk-metric">
+                  <div class="risk-label">Beta Portofolio</div>
+                  <div class="risk-value">1.15</div>
+                  <div class="risk-status status-warning">
+                    Sedikit Di Atas Pasar
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Sharpe Ratio</div>
+                  <div class="risk-value">1.82</div>
+                  <div class="risk-status status-good">Sangat Baik</div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Sortino Ratio</div>
+                  <div class="risk-value">2.14</div>
+                  <div class="risk-status status-good">Sangat Baik</div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Max Drawdown</div>
+                  <div class="risk-value">-8.2%</div>
+                  <div class="risk-status status-good">Dapat Diterima</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Asset Allocation -->
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-chart-pie"></i>
+                <span>Alokasi Aset</span>
+                <button class="btn-sm btn-accent">Rebalance</button>
+              </div>
+              <div class="allocation-content">
+                <div class="allocation-chart">
+                  <div class="pie-placeholder">
+                    <div
+                      class="pie-segment stocks"
+                      style="--percentage: 55%"
+                    ></div>
+                    <div class="pie-center">
+                      <div class="pie-label">Terdiversifikasi</div>
+                      <div class="pie-sublabel">5 Kelas Aset</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="allocation-legend">
+                  <div class="legend-item">
+                    <span class="legend-color stocks"></span>
+                    <span class="legend-label">Saham</span>
+                    <span class="legend-value">55%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color bonds"></span>
+                    <span class="legend-label">Obligasi</span>
+                    <span class="legend-value">20%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color crypto"></span>
+                    <span class="legend-label">Kripto</span>
+                    <span class="legend-value">10%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color commodities"></span>
+                    <span class="legend-label">Komoditas</span>
+                    <span class="legend-value">10%</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-color cash"></span>
+                    <span class="legend-label">Kas</span>
+                    <span class="legend-value">5%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Holdings Table -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-list"></i>
+              <span>Kepemilikan</span>
+              <div class="header-actions">
+                <button class="btn-sm">
+                  <i class="fas fa-download"></i> Ekspor
+                </button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table holdings-table">
+                <thead>
+                  <tr>
+                    <th>Aset</th>
+                    <th>Kuantitas</th>
+                    <th>Rata2 Harga</th>
+                    <th>Harga Saat Ini</th>
+                    <th>Nilai Pasar</th>
+                    <th>P/L</th>
+                    <th>% Imbal Hasil</th>
+                    <th>Alokasi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon stocks">S</div>
+                        <div>
+                          <div class="asset-symbol">BBCA</div>
+                          <div class="asset-name">Bank Central Asia</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>4,000 lot</td>
+                    <td>8,750</td>
+                    <td>9,850</td>
+                    <td>Rp 394,000,000</td>
+                    <td class="text-buy">+Rp 44,000,000</td>
+                    <td class="text-buy">+12.57%</td>
+                    <td>
+                      <div class="allocation-bar">
+                        <div class="allocation-fill" style="width: 32%"></div>
+                      </div>
+                      <span>32%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon stocks">S</div>
+                        <div>
+                          <div class="asset-symbol">BBRI</div>
+                          <div class="asset-name">Bank Rakyat Indonesia</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>3,500 lot</td>
+                    <td>5,100</td>
+                    <td>5,450</td>
+                    <td>Rp 190,750,000</td>
+                    <td class="text-buy">+Rp 12,250,000</td>
+                    <td class="text-buy">+6.86%</td>
+                    <td>
+                      <div class="allocation-bar">
+                        <div class="allocation-fill" style="width: 15%"></div>
+                      </div>
+                      <span>15%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon crypto">₿</div>
+                        <div>
+                          <div class="asset-symbol">BTC</div>
+                          <div class="asset-name">Bitcoin</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>0.85 BTC</td>
+                    <td>$58,200</td>
+                    <td>$67,420</td>
+                    <td>Rp 90,500,000</td>
+                    <td class="text-buy">+Rp 12,400,000</td>
+                    <td class="text-buy">+15.84%</td>
+                    <td>
+                      <div class="allocation-bar">
+                        <div class="allocation-fill" style="width: 7%"></div>
+                      </div>
+                      <span>7%</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Rebalancing -->
+        <div class="tab-panel" data-panel="rebalancing">
+          <div class="page-header">
+            <h1><i class="fas fa-balance-scale"></i> Rebalancing Portofolio</h1>
+            <p>Optimalkan alokasi aset Anda untuk mencapai target investasi</p>
+          </div>
+
+          <!-- Current vs Target Allocation -->
+          <div class="portfolio-grid">
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-chart-pie"></i>
+                <span>Alokasi Saat Ini</span>
+              </div>
+              <div class="rebalance-allocation">
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color stocks"></span> Saham</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar current" style="width: 58%"></div>
+                  </div>
+                  <span class="alloc-value">58%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color bonds"></span> Obligasi</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar current" style="width: 15%"></div>
+                  </div>
+                  <span class="alloc-value">15%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color crypto"></span> Kripto</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar current" style="width: 12%"></div>
+                  </div>
+                  <span class="alloc-value">12%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color commodities"></span>
+                    Komoditas</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar current" style="width: 8%"></div>
+                  </div>
+                  <span class="alloc-value">8%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color cash"></span> Kas</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar current" style="width: 7%"></div>
+                  </div>
+                  <span class="alloc-value">7%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-bullseye"></i>
+                <span>Target Alokasi</span>
+                <button class="btn-sm btn-accent">Edit Target</button>
+              </div>
+              <div class="rebalance-allocation">
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color stocks"></span> Saham</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar target" style="width: 50%"></div>
+                  </div>
+                  <span class="alloc-value">50%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color bonds"></span> Obligasi</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar target" style="width: 25%"></div>
+                  </div>
+                  <span class="alloc-value">25%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color crypto"></span> Kripto</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar target" style="width: 10%"></div>
+                  </div>
+                  <span class="alloc-value">10%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color commodities"></span>
+                    Komoditas</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar target" style="width: 10%"></div>
+                  </div>
+                  <span class="alloc-value">10%</span>
+                </div>
+                <div class="alloc-row">
+                  <span class="alloc-label"
+                    ><span class="legend-color cash"></span> Kas</span
+                  >
+                  <div class="alloc-bar-container">
+                    <div class="alloc-bar target" style="width: 5%"></div>
+                  </div>
+                  <span class="alloc-value">5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rebalancing Actions -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-magic"></i>
+              <span>Rekomendasi Rebalancing</span>
+              <span class="badge-new">Didukung AI</span>
+            </div>
+            <div class="rebalance-suggestions">
+              <div class="suggestion-item">
+                <div class="suggestion-icon sell-action">
+                  <i class="fas fa-minus-circle"></i>
+                </div>
+                <div class="suggestion-content">
+                  <div class="suggestion-action">Jual BBCA</div>
+                  <div class="suggestion-reason">
+                    Kurangi 8% untuk mencapai target alokasi saham 50%
+                  </div>
+                </div>
+                <div class="suggestion-amount text-sell">-Rp 99,700,000</div>
+                <button class="btn-sm">Eksekusi</button>
+              </div>
+              <div class="suggestion-item">
+                <div class="suggestion-icon buy-action">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="suggestion-content">
+                  <div class="suggestion-action">
+                    Beli FR0098 (Obligasi Negara)
+                  </div>
+                  <div class="suggestion-reason">
+                    Tambah 10% untuk mencapai target alokasi obligasi 25%
+                  </div>
+                </div>
+                <div class="suggestion-amount text-buy">+Rp 124,600,000</div>
+                <button class="btn-sm">Eksekusi</button>
+              </div>
+              <div class="suggestion-item">
+                <div class="suggestion-icon sell-action">
+                  <i class="fas fa-minus-circle"></i>
+                </div>
+                <div class="suggestion-content">
+                  <div class="suggestion-action">Jual BTC</div>
+                  <div class="suggestion-reason">
+                    Kurangi 2% untuk mencapai target alokasi kripto 10%
+                  </div>
+                </div>
+                <div class="suggestion-amount text-sell">-Rp 24,900,000</div>
+                <button class="btn-sm">Eksekusi</button>
+              </div>
+            </div>
+            <div class="rebalance-actions">
+              <button class="btn-accent btn-lg">
+                <i class="fas fa-check-double"></i> Eksekusi Semua Rebalancing
+              </button>
+              <button class="btn-secondary btn-lg">
+                <i class="fas fa-calendar-alt"></i> Jadwalkan Auto-Rebalance
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Analisis Risiko -->
+        <div class="tab-panel" data-panel="risiko">
+          <div class="page-header">
+            <h1>
+              <i class="fas fa-shield-alt"></i> Analisis Risiko Portofolio
+            </h1>
+            <p>Pemahaman mendalam tentang profil risiko investasi Anda</p>
+          </div>
+
+          <!-- Risk Score Overview -->
+          <div class="content-section glass-panel risk-overview">
+            <div class="risk-score-main">
+              <div class="risk-gauge">
+                <div class="gauge-circle">
+                  <svg viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                    <circle
+                      class="gauge-fill"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      style="--score: 65"
+                    ></circle>
+                  </svg>
+                  <div class="gauge-value">65</div>
+                </div>
+                <div class="risk-rating">Risiko Sedang</div>
+              </div>
+              <div class="risk-breakdown">
+                <div class="risk-factor">
+                  <span class="factor-label">Volatilitas</span>
+                  <div class="factor-bar">
+                    <div class="factor-fill" style="width: 55%"></div>
+                  </div>
+                  <span class="factor-value">Sedang</span>
+                </div>
+                <div class="risk-factor">
+                  <span class="factor-label">Konsentrasi</span>
+                  <div class="factor-bar">
+                    <div class="factor-fill warning" style="width: 75%"></div>
+                  </div>
+                  <span class="factor-value">Tinggi</span>
+                </div>
+                <div class="risk-factor">
+                  <span class="factor-label">Likuiditas</span>
+                  <div class="factor-bar">
+                    <div class="factor-fill good" style="width: 85%"></div>
+                  </div>
+                  <span class="factor-value">Sangat Baik</span>
+                </div>
+                <div class="risk-factor">
+                  <span class="factor-label">Korelasi</span>
+                  <div class="factor-bar">
+                    <div class="factor-fill" style="width: 45%"></div>
+                  </div>
+                  <span class="factor-value">Rendah</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Metrics Grid -->
+          <div class="portfolio-grid">
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-chart-line"></i>
+                <span>Metrik Risiko Utama</span>
+              </div>
+              <div class="risk-metrics-grid">
+                <div class="risk-metric">
+                  <div class="risk-label">Beta Portofolio</div>
+                  <div class="risk-value">1.15</div>
+                  <div class="risk-status status-warning">
+                    Lebih Volatil dari Pasar
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Sharpe Ratio</div>
+                  <div class="risk-value">1.82</div>
+                  <div class="risk-status status-good">
+                    Risk-Adjusted Return Baik
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Sortino Ratio</div>
+                  <div class="risk-value">2.14</div>
+                  <div class="risk-status status-good">
+                    Downside Risk Terkendali
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Max Drawdown</div>
+                  <div class="risk-value">-8.2%</div>
+                  <div class="risk-status status-good">
+                    Dalam Batas Toleransi
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">VaR (95%)</div>
+                  <div class="risk-value">Rp 24.9M</div>
+                  <div class="risk-status status-warning">
+                    Potensial Loss Harian
+                  </div>
+                </div>
+                <div class="risk-metric">
+                  <div class="risk-label">Treynor Ratio</div>
+                  <div class="risk-value">0.12</div>
+                  <div class="risk-status status-good">
+                    Return per Unit Risk
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Peringatan Risiko</span>
+              </div>
+              <div class="risk-alerts">
+                <div class="alert-item warning">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <div class="alert-content">
+                    <strong>Konsentrasi Tinggi di BBCA (32%)</strong>
+                    <p>
+                      Pertimbangkan diversifikasi untuk mengurangi risiko
+                      spesifik emiten
+                    </p>
+                  </div>
+                </div>
+                <div class="alert-item info">
+                  <i class="fas fa-info-circle"></i>
+                  <div class="alert-content">
+                    <strong>Korelasi Tinggi Antar Saham Bank</strong>
+                    <p>
+                      BBCA, BBRI, BMRI memiliki korelasi >0.8. Pertimbangkan
+                      sektor lain.
+                    </p>
+                  </div>
+                </div>
+                <div class="alert-item success">
+                  <i class="fas fa-check-circle"></i>
+                  <div class="alert-content">
+                    <strong>Likuiditas Portofolio Baik</strong>
+                    <p>95% aset dapat dicairkan dalam 1 hari kerja</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stress Test -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-bolt"></i>
+              <span>Simulasi Stress Test</span>
+            </div>
+            <div class="stress-test-grid">
+              <div class="stress-scenario">
+                <div class="scenario-name">Crash Pasar -20%</div>
+                <div class="scenario-impact text-sell">-Rp 249,170,000</div>
+                <div class="scenario-percent">-20.0%</div>
+              </div>
+              <div class="stress-scenario">
+                <div class="scenario-name">Kenaikan Suku Bunga +2%</div>
+                <div class="scenario-impact text-sell">-Rp 87,209,500</div>
+                <div class="scenario-percent">-7.0%</div>
+              </div>
+              <div class="stress-scenario">
+                <div class="scenario-name">Depresiasi Rupiah 15%</div>
+                <div class="scenario-impact text-buy">+Rp 37,375,500</div>
+                <div class="scenario-percent">+3.0%</div>
+              </div>
+              <div class="stress-scenario">
+                <div class="scenario-name">Crypto Winter -50%</div>
+                <div class="scenario-impact text-sell">-Rp 45,250,000</div>
+                <div class="scenario-percent">-3.6%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Optimasi Pajak -->
+        <div class="tab-panel" data-panel="pajak">
+          <div class="page-header">
+            <h1><i class="fas fa-file-invoice-dollar"></i> Optimasi Pajak</h1>
+            <p>Strategi efisien pajak untuk memaksimalkan return bersih Anda</p>
+          </div>
+
+          <!-- Tax Summary -->
+          <div class="content-section glass-panel tax-summary">
+            <div class="tax-summary-grid">
+              <div class="tax-card">
+                <div class="tax-icon"><i class="fas fa-coins"></i></div>
+                <div class="tax-label">Keuntungan Terealisasi (YTD)</div>
+                <div class="tax-value text-buy">+Rp 78,500,000</div>
+              </div>
+              <div class="tax-card">
+                <div class="tax-icon"><i class="fas fa-percentage"></i></div>
+                <div class="tax-label">Estimasi Pajak (0.1%)</div>
+                <div class="tax-value text-sell">Rp 785,000</div>
+              </div>
+              <div class="tax-card">
+                <div class="tax-icon"><i class="fas fa-piggy-bank"></i></div>
+                <div class="tax-label">Potensi Penghematan</div>
+                <div class="tax-value text-buy">Rp 245,000</div>
+              </div>
+              <div class="tax-card">
+                <div class="tax-icon"><i class="fas fa-calendar"></i></div>
+                <div class="tax-label">Jatuh Tempo Lapor</div>
+                <div class="tax-value">31 Mar 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax Loss Harvesting -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-seedling"></i>
+              <span>Tax Loss Harvesting</span>
+              <span class="badge-new">Rekomendasi</span>
+            </div>
+            <div class="tax-harvest-list">
+              <div class="harvest-item">
+                <div class="harvest-asset">
+                  <div class="asset-icon stocks">S</div>
+                  <div>
+                    <div class="asset-symbol">GOTO</div>
+                    <div class="asset-name">GoTo Gojek Tokopedia</div>
+                  </div>
+                </div>
+                <div class="harvest-details">
+                  <div class="detail-row">
+                    <span>Unrealized Loss:</span>
+                    <span class="text-sell">-Rp 8,000,000</span>
+                  </div>
+                  <div class="detail-row">
+                    <span>Potensi Offset Pajak:</span>
+                    <span class="text-buy">Rp 80,000</span>
+                  </div>
+                </div>
+                <button class="btn-sm btn-accent">Harvest Loss</button>
+              </div>
+              <div class="harvest-item">
+                <div class="harvest-asset">
+                  <div class="asset-icon crypto">Ξ</div>
+                  <div>
+                    <div class="asset-symbol">ETH</div>
+                    <div class="asset-name">Ethereum</div>
+                  </div>
+                </div>
+                <div class="harvest-details">
+                  <div class="detail-row">
+                    <span>Unrealized Loss:</span>
+                    <span class="text-sell">-Rp 3,200,000</span>
+                  </div>
+                  <div class="detail-row">
+                    <span>Potensi Offset Pajak:</span>
+                    <span class="text-buy">Rp 32,000</span>
+                  </div>
+                </div>
+                <button class="btn-sm btn-accent">Harvest Loss</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax Report -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-file-alt"></i>
+              <span>Laporan Pajak</span>
+              <div class="header-actions">
+                <button class="btn-sm">
+                  <i class="fas fa-download"></i> Unduh PDF
+                </button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Transaksi</th>
+                    <th>Tanggal</th>
+                    <th>Aset</th>
+                    <th>Qty</th>
+                    <th>Harga Jual</th>
+                    <th>Harga Beli</th>
+                    <th>Keuntungan/Rugi</th>
+                    <th>Pajak</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge badge-sell">Jual</span></td>
+                    <td>15 Jan 2026</td>
+                    <td>BBCA</td>
+                    <td>500 lot</td>
+                    <td>9,750</td>
+                    <td>8,500</td>
+                    <td class="text-buy">+Rp 62,500,000</td>
+                    <td>Rp 625,000</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-sell">Jual</span></td>
+                    <td>22 Jan 2026</td>
+                    <td>BMRI</td>
+                    <td>300 lot</td>
+                    <td>6,300</td>
+                    <td>6,100</td>
+                    <td class="text-buy">+Rp 6,000,000</td>
+                    <td>Rp 60,000</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-sell">Jual</span></td>
+                    <td>28 Jan 2026</td>
+                    <td>BTC</td>
+                    <td>0.15</td>
+                    <td>$68,000</td>
+                    <td>$61,333</td>
+                    <td class="text-buy">+Rp 10,000,000</td>
+                    <td>Rp 100,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Performa -->
+        <div class="tab-panel" data-panel="performa">
+          <div class="page-header">
+            <h1><i class="fas fa-history"></i> Performa Portofolio</h1>
+            <p>Analisis historis dan perbandingan benchmark</p>
+          </div>
+
+          <!-- Performance Overview -->
+          <div class="content-section glass-panel performance-hero">
+            <div class="performance-main">
+              <div class="perf-stat">
+                <div class="perf-label">Total Return (YTD)</div>
+                <div class="perf-value text-buy">+18.45%</div>
+              </div>
+              <div class="perf-stat">
+                <div class="perf-label">vs IHSG</div>
+                <div class="perf-value text-buy">+5.2%</div>
+              </div>
+              <div class="perf-stat">
+                <div class="perf-label">CAGR (3Y)</div>
+                <div class="perf-value">14.8%</div>
+              </div>
+              <div class="perf-stat">
+                <div class="perf-label">Win Rate</div>
+                <div class="perf-value">68%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Chart Placeholder -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-chart-area"></i>
+              <span>Grafik Performa</span>
+              <div class="header-actions">
+                <button class="btn-sm active">1M</button>
+                <button class="btn-sm">3M</button>
+                <button class="btn-sm">6M</button>
+                <button class="btn-sm">1Y</button>
+                <button class="btn-sm">All</button>
+            </div>
+            <div class="performance-chart-container">
+              <canvas id="performanceChart"></canvas>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="dot portfolio"></span> Portofolio</span>
+                <span class="legend-item"><span class="dot benchmark"></span> IHSG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Returns -->
+          <div class="portfolio-grid">
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Return Bulanan 2026</span>
+              </div>
+              <div class="monthly-returns">
+                <div class="month-item positive">
+                  <span class="month-name">Jan</span>
+                  <div class="month-bar" style="height: 75%"></div>
+                  <span class="month-value">+3.8%</span>
+                </div>
+                <div class="month-item positive">
+                  <span class="month-name">Feb</span>
+                  <div class="month-bar" style="height: 45%"></div>
+                  <span class="month-value">+2.1%</span>
+                </div>
+                <div class="month-item negative">
+                  <span class="month-name">Mar</span>
+                  <div class="month-bar negative" style="height: 30%"></div>
+                  <span class="month-value">-1.2%</span>
+                </div>
+                <div class="month-item positive">
+                  <span class="month-name">Apr</span>
+                  <div class="month-bar" style="height: 60%"></div>
+                  <span class="month-value">+2.8%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-trophy"></i>
+                <span>Top & Bottom Performers</span>
+              </div>
+              <div class="performers-list">
+                <div class="performer-item">
+                  <span class="rank">1</span>
+                  <span class="asset">BTC</span>
+                  <span class="return text-buy">+42.5%</span>
+                </div>
+                <div class="performer-item">
+                  <span class="rank">2</span>
+                  <span class="asset">BBCA</span>
+                  <span class="return text-buy">+12.6%</span>
+                </div>
+                <div class="performer-item">
+                  <span class="rank">3</span>
+                  <span class="asset">BBRI</span>
+                  <span class="return text-buy">+6.9%</span>
+                </div>
+                <div class="performer-item bottom">
+                  <span class="rank">↓</span>
+                  <span class="asset">GOTO</span>
+                  <span class="return text-sell">-8.7%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction History -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-exchange-alt"></i>
+              <span>Riwayat Transaksi</span>
+              <div class="header-actions">
+                <button class="btn-sm">
+                  <i class="fas fa-filter"></i> Filter
+                </button>
+                <button class="btn-sm">
+                  <i class="fas fa-download"></i> Ekspor
+                </button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Tipe</th>
+                    <th>Aset</th>
+                    <th>Qty</th>
+                    <th>Harga</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>31 Jan 2026, 10:15</td>
+                    <td><span class="badge badge-buy">Beli</span></td>
+                    <td>BBCA</td>
+                    <td>100 lot</td>
+                    <td>9,825</td>
+                    <td>Rp 98,250,000</td>
+                    <td>
+                      <span class="status-badge success">Tereksekusi</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>30 Jan 2026, 14:30</td>
+                    <td><span class="badge badge-sell">Jual</span></td>
+                    <td>BMRI</td>
+                    <td>50 lot</td>
+                    <td>6,350</td>
+                    <td>Rp 31,750,000</td>
+                    <td>
+                      <span class="status-badge success">Tereksekusi</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>28 Jan 2026, 09:00</td>
+                    <td><span class="badge badge-buy">Beli</span></td>
+                    <td>BTC</td>
+                    <td>0.05</td>
+                    <td>$67,200</td>
+                    <td>Rp 53,000,000</td>
+                    <td>
+                      <span class="status-badge success">Tereksekusi</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <style>
+      /* Tab Panel Styles */
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page-header {
+        margin-bottom: 24px;
+      }
+      .page-header h1 {
+        font-family: var(--font-heading);
+        font-size: 1.8rem;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+      }
+      .page-header h1 i {
+        color: var(--accent-color);
+      }
+      .page-header p {
+        color: var(--text-secondary);
+        margin: 8px 0 0 0;
+      }
+
+      /* Rebalancing Allocation Bars */
+      .rebalance-allocation {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px 0;
+      }
+      .alloc-row {
+        display: grid;
+        grid-template-columns: 140px 1fr 60px;
+        align-items: center;
+        gap: 15px;
+      }
+      .alloc-label {
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .alloc-bar-container {
+        height: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .alloc-bar {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.5s ease;
+      }
+      .alloc-bar.current {
+        background: linear-gradient(90deg, var(--accent-color), #fdb913);
+      }
+      .alloc-bar.target {
+        background: linear-gradient(90deg, #00e676, #00c853);
+      }
+      .alloc-value {
+        font-weight: 600;
+        text-align: right;
+        color: var(--text-primary);
+      }
+
+      .rebalance-actions {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid var(--glass-border);
+      }
+      .btn-lg {
+        padding: 14px 28px;
+        font-size: 1rem;
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+      }
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Risk Analysis Styles */
+      .risk-overview {
+        padding: 30px;
+      }
+      .risk-score-main {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+      .risk-gauge {
+        text-align: center;
+      }
+      .gauge-circle {
+        width: 150px;
+        height: 150px;
+        position: relative;
+      }
+      .gauge-circle svg {
+        transform: rotate(-90deg);
+      }
+      .gauge-bg {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.1);
+        stroke-width: 8;
+      }
+      .gauge-fill {
+        fill: none;
+        stroke: var(--accent-color);
+        stroke-width: 8;
+        stroke-dasharray: 283;
+        stroke-dashoffset: calc(283 - (283 * var(--score) / 100));
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1s ease;
+      }
+      .gauge-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        font-family: var(--font-heading);
+      }
+      .risk-rating {
+        margin-top: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--accent-color);
+      }
+
+      .risk-breakdown {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .risk-factor {
+        display: grid;
+        grid-template-columns: 100px 1fr 80px;
+        align-items: center;
+        gap: 15px;
+      }
+      .factor-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+      .factor-bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .factor-fill {
+        height: 100%;
+        background: var(--accent-color);
+        border-radius: 4px;
+      }
+      .factor-fill.warning {
+        background: #ff9800;
+      }
+      .factor-fill.good {
+        background: #00e676;
+      }
+      .factor-value {
+        font-size: 0.85rem;
+        text-align: right;
+      }
+
+      .risk-alerts {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .alert-item {
+        display: flex;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .alert-item.warning {
+        border-left: 3px solid #ff9800;
+      }
+      .alert-item.info {
+        border-left: 3px solid #2196f3;
+      }
+      .alert-item.success {
+        border-left: 3px solid #00e676;
+      }
+      .alert-item i {
+        font-size: 1.2rem;
+        margin-top: 2px;
+      }
+      .alert-item.warning i {
+        color: #ff9800;
+      }
+      .alert-item.info i {
+        color: #2196f3;
+      }
+      .alert-item.success i {
+        color: #00e676;
+      }
+      .alert-content strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .alert-content p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .stress-test-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .stress-scenario {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        text-align: center;
+      }
+      .scenario-name {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+      .scenario-impact {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+      .scenario-percent {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 5px;
+      }
+
+      /* Tax Optimization Styles */
+      .tax-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .tax-card {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        text-align: center;
+      }
+      .tax-icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+      }
+      .tax-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+      .tax-value {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      .tax-harvest-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .harvest-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+      }
+      .harvest-asset {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 200px;
+      }
+      .harvest-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .detail-row {
+        display: flex;
+        gap: 10px;
+        font-size: 0.9rem;
+      }
+      .detail-row span:first-child {
+        color: var(--text-secondary);
+      }
+
+      /* Performance Styles */
+      .performance-hero {
+        padding: 30px;
+      }
+      .performance-main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        text-align: center;
+      }
+      .perf-stat {
+        padding: 20px;
+      }
+      .perf-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+      .perf-value {
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: var(--font-heading);
+      }
+
+      .performance-chart-placeholder {
+        height: 300px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        position: relative;
+      }
+      .chart-legend {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        padding-top: 15px;
+      }
+      .chart-legend .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+      }
+      .chart-legend .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .dot.portfolio {
+        background: var(--accent-color);
+      }
+      .dot.benchmark {
+        background: #888;
+      }
+
+      .monthly-returns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-end;
+        height: 150px;
+        padding: 20px 0;
+      }
+      .month-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .month-name {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+      .month-bar {
+        width: 40px;
+        background: linear-gradient(180deg, var(--accent-color), #fdb913);
+        border-radius: 4px 4px 0 0;
+        min-height: 10px;
+      }
+      .month-bar.negative {
+        background: linear-gradient(180deg, #ff1744, #ff5252);
+      }
+      .month-value {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .month-item.positive .month-value {
+        color: var(--buy-color);
+      }
+      .month-item.negative .month-value {
+        color: var(--sell-color);
+      }
+
+      .performers-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .performer-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+      }
+      .performer-item .rank {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-color);
+        color: black;
+        font-weight: 700;
+        border-radius: 50%;
+        font-size: 0.85rem;
+      }
+      .performer-item.bottom .rank {
+        background: var(--sell-color);
+        color: white;
+      }
+      .performer-item .asset {
+        flex: 1;
+        font-weight: 600;
+      }
+      .performer-item .return {
+        font-weight: 700;
+      }
+
+      .badge-buy {
+        background: var(--buy-bg);
+        color: var(--buy-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+      }
+      .badge-sell {
+        background: var(--sell-bg);
+        color: var(--sell-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+      }
+      .status-badge {
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+      }
+      .status-badge.success {
+        background: rgba(0, 230, 118, 0.15);
+        color: #00e676;
+      }
+
+      /* Performance Chart Container */
+      .performance-chart-container {
+        position: relative;
+        height: 350px;
+        padding: 10px 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .performance-chart-container canvas {
+        width: 100% !important;
+        height: 300px !important;
+        cursor: crosshair;
+      }
+      .performance-chart-container .chart-legend {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        padding-top: 15px;
+      }
+      .performance-chart-container .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+      .performance-chart-container .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .performance-chart-container .dot.portfolio {
+        background: var(--accent-color);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+      .performance-chart-container .dot.benchmark {
+        background: #888;
+      }
+    </style>
+
+    <script src="pages.js"></script>
+    <script src="interactions.js"></script>
+    <script>
+      // Portfolio Tab Switching
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuItems = document.querySelectorAll(
+          ".sidebar-menu .menu-item[data-tab]",
+        );
+        const tabPanels = document.querySelectorAll(".tab-panel");
+
+        menuItems.forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+            const tabId = item.dataset.tab;
+
+            // Update menu active state
+            menuItems.forEach((m) => m.classList.remove("active"));
+            item.classList.add("active");
+
+            // Show corresponding panel
+            tabPanels.forEach((panel) => {
+              panel.classList.remove("active");
+              if (panel.dataset.panel === tabId) {
+                panel.classList.add("active");
+              }
+            });
+          });
+        });
+
+        // Initialize Performance Chart
+        class PerformanceChart {
+          constructor(canvasId) {
+            this.canvas = document.getElementById(canvasId);
+            if (!this.canvas) return;
+            this.ctx = this.canvas.getContext('2d');
+            this.timeframe = '1M';
+            this.portfolioData = [];
+            this.benchmarkData = [];
+            this.mouseX = null;
+            this.mouseY = null;
+            this.animationProgress = 0;
+            
+            this.colors = {
+              portfolio: '#FFD700',
+              benchmark: '#666666',
+              grid: 'rgba(255, 255, 255, 0.05)',
+              text: '#888888',
+              bg: '#1a1a1a'
+            };
+            
+            this.init();
+          }
+          
+          init() {
+            // Use ResizeObserver for robust sizing
+            this.resizeObserver = new ResizeObserver(() => {
+                requestAnimationFrame(() => this.resize());
+            });
+            this.resizeObserver.observe(this.canvas.parentElement);
+            
+            this.generateData();
+            this.bindEvents();
+            this.animate();
+          }
+          
+          resize() {
+            const container = this.canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            
+            // Skip if hidden
+            if (rect.width === 0 || rect.height === 0) return;
+            
+            const dpr = window.devicePixelRatio || 1;
+            
+            // Set canvas buffer size (high res)
+            this.canvas.width = rect.width * dpr;
+            this.canvas.height = 300 * dpr;
+            
+            // Scale context for high res
+            this.ctx.scale(dpr, dpr);
+            
+            // Store logical size
+            this.width = rect.width;
+            this.height = 300;
+            
+            this.draw();
+          }
+          
+          generateData() {
+            const points = this.getPointsForTimeframe();
+            this.portfolioData = [];
+            this.benchmarkData = [];
+            
+            // Smoother random walk
+            let portfolioValue = 100;
+            let benchmarkValue = 100;
+            
+            for (let i = 0; i < points; i++) {
+              portfolioValue = portfolioValue * (1 + (Math.random() - 0.45) * 0.02);
+              benchmarkValue = benchmarkValue * (1 + (Math.random() - 0.48) * 0.015);
+              
+              this.portfolioData.push(portfolioValue);
+              this.benchmarkData.push(benchmarkValue);
+            }
+          }
+          
+          getPointsForTimeframe() {
+            const map = { '1M': 30, '3M': 90, '6M': 180, '1Y': 365, 'All': 730 };
+            return map[this.timeframe] || 30;
+          }
+          
+          bindEvents() {
+            this.canvas.addEventListener('mousemove', (e) => {
+              const rect = this.canvas.getBoundingClientRect();
+              this.mouseX = e.clientX - rect.left;
+              this.mouseY = e.clientY - rect.top;
+              
+              // Constrain mouse to chart area
+              const padding = { left: 50, right: 20 };
+              if (this.mouseX < padding.left) this.mouseX = padding.left;
+              if (this.mouseX > this.width - padding.right) this.mouseX = this.width - padding.right;
+              
+              this.draw();
+            });
+            
+            this.canvas.addEventListener('mouseleave', () => {
+              this.mouseX = null;
+              this.mouseY = null;
+              this.draw();
+            });
+            
+            const buttons = document.querySelectorAll('.section-header .header-actions .btn-sm');
+            buttons.forEach(btn => {
+              btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.timeframe = btn.textContent.trim(); // Trim whitespace
+                this.generateData();
+                this.animationProgress = 0; // Reset animation
+                this.animate();
+              });
+            });
+          }
+          
+          animate() {
+            const animate = () => {
+              this.animationProgress += 0.05; // Faster animation
+              if (this.animationProgress >= 1) {
+                this.animationProgress = 1;
+                this.draw();
+                return;
+              }
+              this.draw();
+              requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+          }
+          
+          draw() {
+            if (!this.width || !this.height) return;
+            
+            const ctx = this.ctx;
+            const w = this.width;
+            const h = this.height;
+            const padding = { left: 50, right: 20, top: 30, bottom: 30 }; // Adjusted padding
+            const chartW = w - padding.left - padding.right;
+            const chartH = h - padding.top - padding.bottom;
+            
+            ctx.clearRect(0, 0, w, h);
+            
+            // Calculate Min/Max for Axis
+            const allData = [...this.portfolioData, ...this.benchmarkData];
+            let min = Math.min(...allData);
+            let max = Math.max(...allData);
+            const paddingVal = (max - min) * 0.1;
+            min -= paddingVal;
+            max += paddingVal;
+            const range = max - min;
+            
+            // Draw Grid & Y-Axis
+            ctx.strokeStyle = this.colors.grid;
+            ctx.lineWidth = 1;
+            ctx.font = '10px Roboto, sans-serif'; // Clean font
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            
+            const steps = 5;
+            for (let i = 0; i <= steps; i++) {
+                const y = padding.top + (chartH * i / steps);
+                const value = max - (range * i / steps);
+                
+                // Grid line
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(w - padding.right, y);
+                ctx.stroke();
+                
+                // Label
+                ctx.fillStyle = this.colors.text;
+                ctx.fillText(value.toFixed(1) + '%', padding.left - 10, y);
+            }
+            
+            // Draw X-Axis Labels (Simple start/end)
+            ctx.textAlign = 'center';
+            ctx.fillText('Awal', padding.left, h - 10);
+            ctx.fillText('Sekarang', w - padding.right, h - 10);
+            
+            
+            // Helper to draw lines
+            const drawPath = (data, color, width, shadow) => {
+                ctx.beginPath();
+                const visible = Math.floor((data.length - 1) * this.animationProgress);
+                
+                for (let i = 0; i <= visible; i++) {
+                    const x = padding.left + (i / (data.length - 1)) * chartW;
+                    const val = data[i];
+                    const y = padding.top + chartH - ((val - min) / range) * chartH;
+                    
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                    
+                    // Smooth curve using limits? No, simple lines for performance
+                }
+                
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.lineWidth = width;
+                ctx.strokeStyle = color;
+                if (shadow) {
+                    ctx.shadowColor = color;
+                    ctx.shadowBlur = 10;
+                }
+                ctx.stroke();
+                ctx.shadowBlur = 0; // Reset
+                
+                // Fill Gradient for Portfolio
+                if (shadow && visible > 0) {
+                     const lastI = visible;
+                     const lastX = padding.left + (lastI / (data.length - 1)) * chartW;
+                     const lastY = padding.top + chartH - ((data[lastI] - min) / range) * chartH;
+                     
+                     ctx.lineTo(lastX, padding.top + chartH); // Down to axis
+                     ctx.lineTo(padding.left, padding.top + chartH); // Back to start
+                     ctx.closePath();
+                     
+                     const grad = ctx.createLinearGradient(0, padding.top, 0, padding.top + chartH);
+                     grad.addColorStop(0, 'rgba(255, 215, 0, 0.15)');
+                     grad.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                     ctx.fillStyle = grad;
+                     ctx.fill();
+                }
+            };
+            
+            // Draw Benchmark
+            drawPath(this.benchmarkData, this.colors.benchmark, 2, false);
+            
+            // Draw Portfolio
+            drawPath(this.portfolioData, this.colors.portfolio, 3, true);
+            
+            // Crosshair & Tooltip
+            if (this.mouseX) {
+                // Find closest index
+                const ratio = (this.mouseX - padding.left) / chartW;
+                let idx = Math.round(ratio * (this.portfolioData.length - 1));
+                if (idx < 0) idx = 0;
+                if (idx >= this.portfolioData.length) idx = this.portfolioData.length - 1;
+                
+                const ptX = padding.left + (idx / (this.portfolioData.length - 1)) * chartW;
+                
+                // Vertical Line
+                ctx.beginPath();
+                ctx.moveTo(ptX, padding.top);
+                ctx.lineTo(ptX, h - padding.bottom);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.setLineDash([5, 5]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // Dots
+                const pVal = this.portfolioData[idx];
+                const bVal = this.benchmarkData[idx];
+                const pY = padding.top + chartH - ((pVal - min) / range) * chartH;
+                const bY = padding.top + chartH - ((bVal - min) / range) * chartH;
+                
+                const drawDot = (y, color) => {
+                    ctx.beginPath();
+                    ctx.arc(ptX, y, 5, 0, Math.PI * 2);
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                    ctx.strokeStyle = '#1e1e1e';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                };
+                
+                drawDot(bY, this.colors.benchmark);
+                drawDot(pY, this.colors.portfolio);
+                
+                // Tooltip Box
+                const tooltipW = 120;
+                const tooltipH = 50;
+                let tipX = ptX + 15;
+                let tipY = padding.top;
+                
+                // Flip if too close to right
+                if (tipX + tooltipW > w) tipX = ptX - tooltipW - 15;
+                
+                ctx.fillStyle = 'rgba(30,30,30, 0.9)';
+                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(tipX, tipY, tooltipW, tooltipH, 5);
+                ctx.fill();
+                ctx.stroke();
+                
+                // Tooltip Text
+                ctx.textAlign = 'left';
+                ctx.font = 'bold 11px sans-serif';
+                ctx.fillStyle = this.colors.portfolio;
+                ctx.fillText(`Portofolio: ${pVal.toFixed(1)}%`, tipX + 10, tipY + 20);
+                ctx.fillStyle = this.colors.benchmark;
+                ctx.fillText(`IHSG: ${bVal.toFixed(1)}%`, tipX + 10, tipY + 38);
+            }
+          }
+        }
+        
+        // Create chart instance
+        window.performanceChart = new PerformanceChart('performanceChart');
+      });
+    </script>
+  </body>
+</html>

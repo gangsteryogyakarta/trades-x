@@ -1,0 +1,16 @@
+node_modules
+vendor
+.git
+.next
+.env
+.env.*
+!.env.example
+storage/*.key
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*.php
+bootstrap/cache/*.php
+public/hot
+public/storage
+storage/app/public

@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Load Balancer / API Gateway
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - tradex-network
+
+  # Backend: Laravel 11
+  backend:
+    image: bitnami/laravel:11
+    container_name: tradex-backend
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=tradex_db
+      - DB_USERNAME=tradex_user
+      - DB_PASSWORD=secret_password
+      - REDIS_HOST=redis
+    volumes:
+      - ./backend:/app
+    networks:
+      - tradex-network
+    depends_on:
+      - postgres
+      - redis
+
+  # Frontend: Next.js 14
+  frontend:
+    image: node:20-alpine
+    container_name: tradex-frontend
+    working_dir: /app
+    command: npm run dev
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    networks:
+      - tradex-network
+
+  # Database: PostgreSQL + TimescaleDB
+  postgres:
+    image: timescale/timescaledb:latest-pg14
+    container_name: tradex-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=tradex_db
+      - POSTGRES_USER=tradex_user
+      - POSTGRES_PASSWORD=secret_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - tradex-network
+
+  # Cache & Queue: Redis
+  redis:
+    image: redis:alpine
+    container_name: tradex-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - tradex-network
+
+  # AI Service (Python)
+  ai-engine:
+    build: 
+      context: ./ai-engine
+      dockerfile: Dockerfile
+    container_name: tradex-ai
+    volumes:
+      - ./ai-engine:/app
+    networks:
+      - tradex-network
+
+networks:
+  tradex-network:
+    driver: bridge
+
+volumes:
+  pgdata:

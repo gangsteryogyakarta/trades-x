@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Learn Trading</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html" class="active">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Semua Kursus</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-video"></i>
+            <span>Webinar</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-newspaper"></i>
+            <span>Artikel</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-question-circle"></i>
+            <span>Kuis</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-certificate"></i>
+            <span>Sertifikat</span>
+          </a>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-title">Progres Anda</div>
+          <div class="progress-ring-container">
+            <svg class="progress-ring" viewBox="0 0 36 36">
+              <path
+                class="progress-bg"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                class="progress-fill"
+                stroke-dasharray="65, 100"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <text x="18" y="20.35" class="progress-text">65%</text>
+            </svg>
+          </div>
+          <div class="progress-label">13 dari 20 pelajaran selesai</div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Learning Stats -->
+        <div class="ai-summary-row">
+          <div class="summary-card glass-panel">
+            <div class="card-icon success">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Kursus Selesai</div>
+              <div class="card-value">8</div>
+              <div class="card-sub">3 sedang berjalan</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon neutral">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Waktu Belajar</div>
+              <div class="card-value">24j</div>
+              <div class="card-sub">Bulan ini</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon bullish">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Nilai Kuis</div>
+              <div class="card-value">86%</div>
+              <div class="card-sub">Nilai rata-rata</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon warning">
+              <i class="fas fa-medal"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Level Keahlian</div>
+              <div class="card-value">Menengah</div>
+              <div class="card-sub">Terus belajar!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue Learning -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-play-circle"></i>
+            <span>Lanjutkan Belajar</span>
+          </div>
+          <div class="continue-card">
+            <div class="continue-thumbnail">
+              <img
+                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=200&fit=crop"
+                alt="Course"
+              />
+              <div class="play-overlay"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="continue-content">
+              <div class="continue-category">Analisis Teknikal Lanjutan</div>
+              <div class="continue-title">
+                Pelajaran 7: Penguasaan Fibonacci Retracement
+              </div>
+              <div class="continue-progress">
+                <div class="progress-bar-thin">
+                  <div class="progress-fill-thin" style="width: 45%"></div>
+                </div>
+                <span>45% selesai</span>
+              </div>
+            </div>
+            <button class="btn-accent btn-lg">
+              <i class="fas fa-play"></i> Lanjutkan
+            </button>
+          </div>
+        </div>
+
+        <!-- Course Categories -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Jalur Belajar</span>
+          </div>
+          <div class="courses-grid">
+            <!-- Beginner Track -->
+            <div class="course-card beginner">
+              <div class="course-badge">PEMULA</div>
+              <div class="course-icon"><i class="fas fa-seedling"></i></div>
+              <div class="course-title">Dasar-Dasar Trading</div>
+              <div class="course-desc">
+                Pelajari dasar pasar saham, tipe order, dan membangun portofolio
+                pertamamu.
+              </div>
+              <div class="course-meta">
+                <span><i class="fas fa-book"></i> 12 Pelajaran</span>
+                <span><i class="fas fa-clock"></i> 4 Jam</span>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar-thin complete">
+                  <div class="progress-fill-thin" style="width: 100%"></div>
+                </div>
+                <span class="text-buy">Selesai ✓</span>
+              </div>
+            </div>
+
+            <!-- Intermediate Track -->
+            <div class="course-card intermediate">
+              <div class="course-badge">MENENGAH</div>
+              <div class="course-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="course-title">Analisis Teknikal</div>
+              <div class="course-desc">
+                Kuasai pola grafik, indikator, dan teknik analisis tren.
+              </div>
+              <div class="course-meta">
+                <span><i class="fas fa-book"></i> 18 Pelajaran</span>
+                <span><i class="fas fa-clock"></i> 8 Jam</span>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar-thin">
+                  <div class="progress-fill-thin" style="width: 65%"></div>
+                </div>
+                <span>65% selesai</span>
+              </div>
+            </div>
+
+            <!-- Advanced Track -->
+            <div class="course-card advanced">
+              <div class="course-badge">LANJUTAN</div>
+              <div class="course-icon"><i class="fas fa-brain"></i></div>
+              <div class="course-title">Trading Algoritmik</div>
+              <div class="course-desc">
+                Bangun strategi trading otomatis dan backtest sistemmu.
+              </div>
+              <div class="course-meta">
+                <span><i class="fas fa-book"></i> 24 Pelajaran</span>
+                <span><i class="fas fa-clock"></i> 12 Jam</span>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar-thin">
+                  <div class="progress-fill-thin" style="width: 0%"></div>
+                </div>
+                <span>Belum dimulai</span>
+              </div>
+            </div>
+
+            <!-- Risk Management -->
+            <div class="course-card risk">
+              <div class="course-badge">PENTING</div>
+              <div class="course-icon"><i class="fas fa-shield-alt"></i></div>
+              <div class="course-title">Manajemen Risiko</div>
+              <div class="course-desc">
+                Ukuran posisi, stop loss, dan melindungi modalmu.
+              </div>
+              <div class="course-meta">
+                <span><i class="fas fa-book"></i> 10 Pelajaran</span>
+                <span><i class="fas fa-clock"></i> 3 Jam</span>
+              </div>
+              <div class="course-progress">
+                <div class="progress-bar-thin complete">
+                  <div class="progress-fill-thin" style="width: 100%"></div>
+                </div>
+                <span class="text-buy">Selesai ✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Webinars -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-video"></i>
+            <span>Webinar Langsung Mendatang</span>
+          </div>
+          <div class="webinars-list">
+            <div class="webinar-item">
+              <div class="webinar-date">
+                <div class="date-day">15</div>
+                <div class="date-month">PEB</div>
+              </div>
+              <div class="webinar-content">
+                <div class="webinar-title">
+                  Outlook Pasar 2026: Diskusi Panel Ahli
+                </div>
+                <div class="webinar-speaker">
+                  <img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=expert1"
+                    class="mini-avatar"
+                  />
+                  <span>Alex Wijaya, Sarah Chen, Budi Santoso</span>
+                </div>
+                <div class="webinar-meta">
+                  <span><i class="fas fa-clock"></i> 19:00 WIB</span>
+                  <span><i class="fas fa-users"></i> 1,240 terdaftar</span>
+                </div>
+              </div>
+              <button class="btn-sm btn-accent">Daftar</button>
+            </div>
+            <div class="webinar-item">
+              <div class="webinar-date">
+                <div class="date-day">22</div>
+                <div class="date-month">PEB</div>
+              </div>
+              <div class="webinar-content">
+                <div class="webinar-title">
+                  Strategi Trading Kripto untuk Pemula
+                </div>
+                <div class="webinar-speaker">
+                  <img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=crypto_master"
+                    class="mini-avatar"
+                  />
+                  <span>Ryan Crypto</span>
+                </div>
+                <div class="webinar-meta">
+                  <span><i class="fas fa-clock"></i> 20:00 WIB</span>
+                  <span><i class="fas fa-users"></i> 890 terdaftar</span>
+                </div>
+              </div>
+              <button class="btn-sm btn-accent">Daftar</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+  </body>
+</html>

@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Trading Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="sim-mode-badge">
+          <i class="fas fa-flask"></i> MODE SIMULASI
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active">
+            <i class="fas fa-play-circle"></i>
+            <span>Simulasi Trading</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-history"></i>
+            <span>Backtesting</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-code"></i>
+            <span>Pembuat Strategi</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Kinerja</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-book"></i>
+            <span>Jurnal Trading</span>
+          </a>
+        </div>
+
+        <!-- Virtual Account Card -->
+        <div class="virtual-account-card">
+          <div class="va-header">
+            <i class="fas fa-wallet"></i>
+            <span>Akun Virtual</span>
+          </div>
+          <div class="va-balance">Rp 500.000.000</div>
+          <div class="va-pnl text-buy">+Rp 45.200.000 (+9,04%)</div>
+          <button class="btn-sm" style="width: 100%; margin-top: 10px">
+            <i class="fas fa-redo"></i> Reset Akun
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Simulator Stats -->
+        <div class="ai-summary-row">
+          <div class="summary-card glass-panel">
+            <div class="card-icon success">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Win Rate</div>
+              <div class="card-value text-buy">68%</div>
+              <div class="card-sub">34 dari 50 trade</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon neutral">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Total Trade</div>
+              <div class="card-value">50</div>
+              <div class="card-sub">Bulan ini</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon bullish">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Trade Terbaik</div>
+              <div class="card-value text-buy">+24.5%</div>
+              <div class="card-sub">BBCA Long</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon warning">
+              <i class="fas fa-chart-area"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Max Drawdown</div>
+              <div class="card-value text-sell">-8.2%</div>
+              <div class="card-sub">Dari puncak</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paper Trading Panel -->
+        <div class="simulator-grid">
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-gamepad"></i>
+              <span>Simulasi Trading</span>
+              <span class="live-indicator"
+                ><span class="pulse"></span> Simulasi Langsung</span
+              >
+            </div>
+            <div class="paper-trade-form">
+              <div class="asset-row">
+                <div class="asset-icon stocks">S</div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Cari simbol..."
+                  value="BBCA"
+                />
+                <span class="price-display"
+                  >9.850 <span class="text-buy">+1,25%</span></span
+                >
+              </div>
+
+              <div class="trade-controls">
+                <div class="control-group">
+                  <label>Sisi</label>
+                  <div class="btn-group">
+                    <button class="btn-side buy active">BELI</button>
+                    <button class="btn-side sell">JUAL</button>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label>Tipe</label>
+                  <select class="form-control">
+                    <option>Market</option>
+                    <option>Limit</option>
+                    <option>Stop Loss</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label>Kuantitas (Lot)</label>
+                  <input type="number" class="form-control" value="100" />
+                </div>
+                <div class="control-group">
+                  <label>Est. Nilai</label>
+                  <div class="value-display">Rp 98.500.000</div>
+                </div>
+              </div>
+
+              <button class="btn-order btn-buy-action">
+                <i class="fas fa-paper-plane"></i> Eksekusi Trade Simulasi
+              </button>
+            </div>
+          </div>
+
+          <!-- Positions -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <i class="fas fa-briefcase"></i>
+              <span>Posisi Virtual</span>
+            </div>
+            <div class="positions-list">
+              <div class="position-item">
+                <div class="position-symbol">
+                  <div class="asset-icon stocks">S</div>
+                  <div>
+                    <div class="symbol">BBCA</div>
+                    <div class="qty">200 lot @ 9.500</div>
+                  </div>
+                </div>
+                <div class="position-pnl">
+                  <div class="pnl-value text-buy">+Rp 7.000.000</div>
+                  <div class="pnl-percent text-buy">+3,68%</div>
+                </div>
+                <button class="btn-sm text-sell">Tutup</button>
+              </div>
+              <div class="position-item">
+                <div class="position-symbol">
+                  <div class="asset-icon crypto">₿</div>
+                  <div>
+                    <div class="symbol">BTC</div>
+                    <div class="qty">0,5 BTC @ $65.000</div>
+                  </div>
+                </div>
+                <div class="position-pnl">
+                  <div class="pnl-value text-buy">+$1.210</div>
+                  <div class="pnl-percent text-buy">+3,72%</div>
+                </div>
+                <button class="btn-sm text-sell">Tutup</button>
+              </div>
+              <div class="position-item">
+                <div class="position-symbol">
+                  <div class="asset-icon stocks">S</div>
+                  <div>
+                    <div class="symbol">GOTO</div>
+                    <div class="qty">500 lot @ 88</div>
+                  </div>
+                </div>
+                <div class="position-pnl">
+                  <div class="pnl-value text-sell">-Rp 2.000.000</div>
+                  <div class="pnl-percent text-sell">-4,55%</div>
+                </div>
+                <button class="btn-sm text-sell">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backtesting Section -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-history"></i>
+            <span>Backtesting Strategi</span>
+            <span class="badge-new">Beta</span>
+          </div>
+          <div class="backtest-form">
+            <div class="backtest-row">
+              <div class="form-group">
+                <label>Strategi</label>
+                <select class="form-control">
+                  <option>Moving Average Crossover</option>
+                  <option>RSI Oversold/Overbought</option>
+                  <option>Bollinger Bands Bounce</option>
+                  <option>Strategi Kustom</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Simbol</label>
+                <input type="text" class="form-control" value="BBCA" />
+              </div>
+              <div class="form-group">
+                <label>Timeframe</label>
+                <select class="form-control">
+                  <option>1 Jam</option>
+                  <option>4 Jam</option>
+                  <option selected>1 Hari</option>
+                  <option>1 Minggu</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Periode</label>
+                <select class="form-control">
+                  <option>1 Bulan Terakhir</option>
+                  <option>3 Bulan Terakhir</option>
+                  <option selected>1 Tahun Terakhir</option>
+                  <option>3 Tahun Terakhir</option>
+                </select>
+              </div>
+              <button class="btn-accent btn-lg">
+                <i class="fas fa-play"></i> Jalankan Backtest
+              </button>
+            </div>
+          </div>
+
+          <!-- Backtest Results -->
+          <div class="backtest-results">
+            <div class="result-header">
+              <h3>Hasil Backtest: MA Crossover pada BBCA (1T)</h3>
+              <span class="result-date">Selesai 2 menit yang lalu</span>
+            </div>
+            <div class="result-metrics">
+              <div class="metric">
+                <div class="metric-label">Total Return</div>
+                <div class="metric-value text-buy">+42.5%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Buy & Hold</div>
+                <div class="metric-value">+28.3%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Alpha</div>
+                <div class="metric-value text-buy">+14.2%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Sharpe Ratio</div>
+                <div class="metric-value">1.85</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Win Rate</div>
+                <div class="metric-value">62%</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Trade</div>
+                <div class="metric-value">24</div>
+              </div>
+            </div>
+            <div class="result-chart-placeholder">
+              <div class="chart-legend">
+                <span class="legend-item"
+                  ><span class="dot strategy"></span> Strategi</span
+                >
+                <span class="legend-item"
+                  ><span class="dot benchmark"></span> Buy & Hold</span
+                >
+              </div>
+              <div class="chart-area-placeholder">[Grafik Kurva Ekuitas]</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+    <style>
+      .sim-mode-badge {
+        background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        color: #000;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .virtual-account-card {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.2),
+          rgba(139, 92, 246, 0.2)
+        );
+        border-radius: 12px;
+        padding: 15px;
+        margin: 10px;
+      }
+
+      .va-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      .va-balance {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      .va-pnl {
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+
+      .simulator-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 16px;
+      }
+
+      .paper-trade-form {
+        padding: 20px;
+      }
+
+      .asset-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .asset-row .form-control {
+        flex: 1;
+      }
+
+      .price-display {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .trade-controls {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .control-group label {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 5px;
+      }
+
+      .btn-side {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-secondary);
+      }
+
+      .btn-side.buy.active {
+        background: var(--buy-color);
+        color: white;
+      }
+
+      .btn-side.sell.active {
+        background: var(--sell-color);
+        color: white;
+      }
+
+      .value-display {
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      .live-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: auto;
+        font-size: 0.8rem;
+        color: var(--buy-color);
+      }
+
+      .pulse {
+        width: 8px;
+        height: 8px;
+        background: var(--buy-color);
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.2);
+        }
+      }
+
+      .positions-list {
+        padding: 15px;
+      }
+
+      .position-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .position-symbol {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+      }
+
+      .position-symbol .symbol {
+        font-weight: 600;
+      }
+
+      .position-symbol .qty {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      .position-pnl {
+        text-align: right;
+      }
+
+      .pnl-value {
+        font-weight: 600;
+      }
+
+      .pnl-percent {
+        font-size: 0.8rem;
+      }
+
+      .backtest-form {
+        padding: 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .backtest-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 15px;
+      }
+
+      .backtest-row .form-group {
+        flex: 1;
+      }
+
+      .backtest-results {
+        padding: 20px;
+      }
+
+      .result-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .result-header h3 {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .result-date {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .result-metrics {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .result-metrics .metric {
+        text-align: center;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+
+      .result-metrics .metric-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+      }
+
+      .result-metrics .metric-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .result-chart-placeholder {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .chart-legend {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .dot.strategy {
+        background: var(--buy-color);
+      }
+      .dot.benchmark {
+        background: var(--accent-color);
+      }
+
+      .chart-area-placeholder {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        border: 1px dashed var(--glass-border);
+        border-radius: 8px;
+      }
+    </style>
+  </body>
+</html>

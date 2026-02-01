@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Social Trading</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html" class="active">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active">
+            <i class="fas fa-trophy"></i>
+            <span>Papan Peringkat</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-copy"></i>
+            <span>Copy Trading</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-users"></i>
+            <span>Mengikuti</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-comments"></i>
+            <span>Diskusi</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-lightbulb"></i>
+            <span>Ide Trading</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Stats Row -->
+        <div class="ai-summary-row">
+          <div class="summary-card glass-panel">
+            <div class="card-icon success">
+              <i class="fas fa-user-check"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Trader Diikuti</div>
+              <div class="card-value">12</div>
+              <div class="card-sub">Copy trader aktif</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon neutral">
+              <i class="fas fa-clone"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Trade Disalin</div>
+              <div class="card-value">156</div>
+              <div class="card-sub">Bulan ini</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon bullish">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">P/L Copy</div>
+              <div class="card-value text-buy">+18.5%</div>
+              <div class="card-sub">vs +12% pasar</div>
+            </div>
+          </div>
+          <div class="summary-card glass-panel">
+            <div class="card-icon warning">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div class="card-content">
+              <div class="card-label">Alokasi Copy</div>
+              <div class="card-value">Rp 150 Jt</div>
+              <div class="card-sub">12% dari portofolio</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Traders Leaderboard -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <div class="header-left">
+              <i class="fas fa-trophy" style="color: gold"></i>
+              <span>Papan Peringkat Trader Terbaik</span>
+            </div>
+            <div class="header-actions">
+              <select class="filter-select">
+                <option>30 Hari Terakhir</option>
+                <option>90 Hari Terakhir</option>
+                <option>1 Tahun</option>
+              </select>
+              <select class="filter-select">
+                <option>Semua Aset</option>
+                <option>Saham Saja</option>
+                <option>Kripto Saja</option>
+              </select>
+            </div>
+          </div>
+          <div class="leaderboard-grid">
+            <!-- Rank 1 -->
+            <div class="trader-card rank-1 glass-panel">
+              <div class="rank-badge">1</div>
+              <div class="trader-avatar">
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=alex"
+                  alt="Avatar"
+                />
+                <span class="verified-badge"><i class="fas fa-check"></i></span>
+              </div>
+              <div class="trader-name">Alex Wijaya</div>
+              <div class="trader-title">Pro Trader</div>
+              <div class="trader-stats">
+                <div class="stat">
+                  <div class="stat-value text-buy">+156.8%</div>
+                  <div class="stat-label">Return</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">72%</div>
+                  <div class="stat-label">Win Rate</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">2.4</div>
+                  <div class="stat-label">Sharpe</div>
+                </div>
+              </div>
+              <div class="trader-followers">
+                <i class="fas fa-users"></i> 12,450 pengikut
+              </div>
+              <button class="btn-copy">
+                <i class="fas fa-copy"></i> Salin Trader
+              </button>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="trader-card rank-2 glass-panel">
+              <div class="rank-badge">2</div>
+              <div class="trader-avatar">
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah"
+                  alt="Avatar"
+                />
+                <span class="verified-badge"><i class="fas fa-check"></i></span>
+              </div>
+              <div class="trader-name">Sarah Chen</div>
+              <div class="trader-title">Swing Trader</div>
+              <div class="trader-stats">
+                <div class="stat">
+                  <div class="stat-value text-buy">+124.2%</div>
+                  <div class="stat-label">Return</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">68%</div>
+                  <div class="stat-label">Win Rate</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">2.1</div>
+                  <div class="stat-label">Sharpe</div>
+                </div>
+              </div>
+              <div class="trader-followers">
+                <i class="fas fa-users"></i> 8,720 pengikut
+              </div>
+              <button class="btn-copy">
+                <i class="fas fa-copy"></i> Salin Trader
+              </button>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="trader-card rank-3 glass-panel">
+              <div class="rank-badge">3</div>
+              <div class="trader-avatar">
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=budi"
+                  alt="Avatar"
+                />
+                <span class="verified-badge"><i class="fas fa-check"></i></span>
+              </div>
+              <div class="trader-name">Budi Santoso</div>
+              <div class="trader-title">Value Investor</div>
+              <div class="trader-stats">
+                <div class="stat">
+                  <div class="stat-value text-buy">+98.5%</div>
+                  <div class="stat-label">Return</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">78%</div>
+                  <div class="stat-label">Win Rate</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">1.9</div>
+                  <div class="stat-label">Sharpe</div>
+                </div>
+              </div>
+              <div class="trader-followers">
+                <i class="fas fa-users"></i> 6,340 pengikut
+              </div>
+              <button class="btn-copy">
+                <i class="fas fa-copy"></i> Salin Trader
+              </button>
+            </div>
+          </div>
+
+          <!-- More Traders Table -->
+          <div class="table-container" style="margin-top: 20px">
+            <table class="data-table traders-table">
+              <thead>
+                <tr>
+                  <th>Peringkat</th>
+                  <th>Trader</th>
+                  <th>Return 30H</th>
+                  <th>Win Rate</th>
+                  <th>Rata2 Trade</th>
+                  <th>Skor Risiko</th>
+                  <th>Pengikut</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    <div class="trader-cell">
+                      <img
+                        src="https://api.dicebear.com/7.x/avataaars/svg?seed=david"
+                        class="mini-avatar"
+                      />
+                      <span>David Lim</span>
+                    </div>
+                  </td>
+                  <td class="text-buy">+78.4%</td>
+                  <td>65%</td>
+                  <td>Rp 12.5 Jt</td>
+                  <td><span class="risk-badge medium">Sedang</span></td>
+                  <td>4,280</td>
+                  <td><button class="btn-sm">Salin</button></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    <div class="trader-cell">
+                      <img
+                        src="https://api.dicebear.com/7.x/avataaars/svg?seed=maya"
+                        class="mini-avatar"
+                      />
+                      <span>Maya Putri</span>
+                    </div>
+                  </td>
+                  <td class="text-buy">+65.2%</td>
+                  <td>71%</td>
+                  <td>Rp 8.2 Jt</td>
+                  <td><span class="risk-badge low">Rendah</span></td>
+                  <td>3,890</td>
+                  <td><button class="btn-sm">Salin</button></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>
+                    <div class="trader-cell">
+                      <img
+                        src="https://api.dicebear.com/7.x/avataaars/svg?seed=ryan"
+                        class="mini-avatar"
+                      />
+                      <span>Ryan Crypto</span>
+                    </div>
+                  </td>
+                  <td class="text-buy">+142.8%</td>
+                  <td>54%</td>
+                  <td>Rp 25.0 Jt</td>
+                  <td><span class="risk-badge high">Tinggi</span></td>
+                  <td>5,420</td>
+                  <td><button class="btn-sm">Salin</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Community Discussions -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-comments"></i>
+            <span>Diskusi Populer</span>
+            <button class="btn-sm btn-accent">
+              <i class="fas fa-plus"></i> Posting Baru
+            </button>
+          </div>
+          <div class="discussions-list">
+            <div class="discussion-item">
+              <div class="discussion-avatar">
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=alex"
+                  alt="Avatar"
+                />
+              </div>
+              <div class="discussion-content">
+                <div class="discussion-header">
+                  <span class="discussion-author">Alex Wijaya</span>
+                  <span class="discussion-badge verified">Pro Trader</span>
+                  <span class="discussion-time">2 jam yang lalu</span>
+                </div>
+                <div class="discussion-title">
+                  🚀 Analisis BBCA - Menembus Resistensi Kunci!
+                </div>
+                <div class="discussion-preview">
+                  Setup teknikal terlihat bullish. Aksi harga konfirmasi
+                  breakout di atas resistensi 9,800 dengan volume kuat. Target
+                  10,500 akhir bulan...
+                </div>
+                <div class="discussion-stats">
+                  <span><i class="fas fa-heart"></i> 245</span>
+                  <span><i class="fas fa-comment"></i> 48</span>
+                  <span><i class="fas fa-share"></i> 12</span>
+                </div>
+              </div>
+            </div>
+            <div class="discussion-item">
+              <div class="discussion-avatar">
+                <img
+                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=crypto_master"
+                  alt="Avatar"
+                />
+              </div>
+              <div class="discussion-content">
+                <div class="discussion-header">
+                  <span class="discussion-author">CryptoMaster</span>
+                  <span class="discussion-time">5 jam yang lalu</span>
+                </div>
+                <div class="discussion-title">
+                  📈 Arus Masuk ETF BTC Tetap Kuat - Artinya Apa
+                </div>
+                <div class="discussion-preview">
+                  Permintaan institusi berlanjut dengan arus masuk harian
+                  $500jt+. Guncangan suplai ini ditambah halving dapat mendorong
+                  harga naik signifikan...
+                </div>
+                <div class="discussion-stats">
+                  <span><i class="fas fa-heart"></i> 189</span>
+                  <span><i class="fas fa-comment"></i> 67</span>
+                  <span><i class="fas fa-share"></i> 24</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Advanced Orders</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container full-width">
+      <!-- Main Content - Advanced Order Form -->
+      <main class="page-main" style="max-width: 900px; margin: 0 auto">
+        <!-- Order Type Selector -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Entri Order Lanjutan</span>
+          </div>
+
+          <!-- Asset Selector -->
+          <div class="asset-selector">
+            <div class="selected-asset">
+              <div class="asset-icon stocks">S</div>
+              <div class="asset-info">
+                <div class="asset-symbol">BBCA</div>
+                <div class="asset-price">
+                  <span class="price-value">9,850</span>
+                  <span class="price-change text-buy">+1.25%</span>
+                </div>
+              </div>
+              <button class="btn-sm"><i class="fas fa-search"></i> Ubah</button>
+            </div>
+          </div>
+
+          <!-- Order Side Toggle -->
+          <div class="order-side-toggle">
+            <button class="side-btn buy active">BELI</button>
+            <button class="side-btn sell">JUAL</button>
+          </div>
+
+          <!-- Order Type Tabs -->
+          <div class="order-type-tabs">
+            <button class="type-tab active">Limit</button>
+            <button class="type-tab">Market</button>
+            <button class="type-tab">Stop Loss</button>
+            <button class="type-tab">Stop Limit</button>
+            <button class="type-tab">Trailing Stop</button>
+            <button class="type-tab">OCO</button>
+            <button class="type-tab">Bracket</button>
+          </div>
+
+          <!-- Order Form -->
+          <div class="order-form-grid">
+            <div class="form-section">
+              <div class="form-group">
+                <label>Harga (Rp)</label>
+                <div class="input-with-buttons">
+                  <button class="input-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="number" class="form-control" value="9850" />
+                  <button class="input-btn"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="input-hint">
+                  Pasar: 9,850 | Bid: 9,845 | Ask: 9,855
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Kuantitas (Lot)</label>
+                <div class="input-with-buttons">
+                  <button class="input-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="number" class="form-control" value="100" />
+                  <button class="input-btn"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="quick-amounts">
+                  <button class="quick-btn">25%</button>
+                  <button class="quick-btn">50%</button>
+                  <button class="quick-btn">75%</button>
+                  <button class="quick-btn">100%</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Masa Berlaku</label>
+                <select class="form-control">
+                  <option>Day Order (GFD)</option>
+                  <option>Good Till Cancelled (GTC)</option>
+                  <option>Immediate or Cancel (IOC)</option>
+                  <option>Fill or Kill (FOK)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <!-- Risk Management -->
+              <div class="risk-section">
+                <div class="risk-header">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>Manajemen Risiko</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label>Stop Loss</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" value="9600" />
+                    <span class="input-suffix">(-2.5%)</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Take Profit</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" value="10200" />
+                    <span class="input-suffix">(+3.6%)</span>
+                  </div>
+                </div>
+
+                <div class="risk-metrics-mini">
+                  <div class="risk-item">
+                    <span class="label">Risk/Reward:</span>
+                    <span class="value text-buy">1:1.44</span>
+                  </div>
+                  <div class="risk-item">
+                    <span class="label">Kerugian Maks:</span>
+                    <span class="value text-sell">-Rp 2.500.000</span>
+                  </div>
+                  <div class="risk-item">
+                    <span class="label">Potensi Keuntungan:</span>
+                    <span class="value text-buy">+Rp 3.500.000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="order-summary">
+            <div class="summary-row">
+              <span>Nilai Order</span>
+              <span class="value">Rp 98.500.000</span>
+            </div>
+            <div class="summary-row">
+              <span>Komisi (0,15%)</span>
+              <span class="value">Rp 147.750</span>
+            </div>
+            <div class="summary-row">
+              <span>Levy & Pajak</span>
+              <span class="value">Rp 50.000</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total Diperlukan</span>
+              <span class="value">Rp 98.697.750</span>
+            </div>
+            <div class="buying-power-check">
+              <i class="fas fa-check-circle text-buy"></i>
+              <span>Buying power mencukupi (Rp 245.000.000 tersedia)</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="btn-order btn-buy-action btn-lg">
+            <i class="fas fa-check"></i> Pasang Order Beli
+          </button>
+        </div>
+
+        <!-- Open Orders -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-list-alt"></i>
+            <span>Order Terbuka</span>
+            <span class="badge-count">4</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table orders-table">
+              <thead>
+                <tr>
+                  <th>Waktu</th>
+                  <th>Simbol</th>
+                  <th>Tipe</th>
+                  <th>Sisi</th>
+                  <th>Harga</th>
+                  <th>Jml</th>
+                  <th>Terisi</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09:15:32</td>
+                  <td><strong>BBCA</strong></td>
+                  <td>Limit</td>
+                  <td><span class="side-badge buy">BELI</span></td>
+                  <td>9,800</td>
+                  <td>50</td>
+                  <td>0/50</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>09:12:18</td>
+                  <td><strong>GOTO</strong></td>
+                  <td>Stop Loss</td>
+                  <td><span class="side-badge sell">JUAL</span></td>
+                  <td>80</td>
+                  <td>1,000</td>
+                  <td>0/1,000</td>
+                  <td><span class="status-badge watching">Memantau</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>09:08:45</td>
+                  <td><strong>BBRI</strong></td>
+                  <td>Bracket</td>
+                  <td><span class="side-badge buy">BELI</span></td>
+                  <td>5,400</td>
+                  <td>100</td>
+                  <td>100/100</td>
+                  <td><span class="status-badge filled">Terisi</span></td>
+                  <td>
+                    <button class="btn-action disabled">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action disabled">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+  </body>
+</html>

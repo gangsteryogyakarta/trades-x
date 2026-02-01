@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Professional Trading Platform</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div
+          class="notification-bell"
+          onclick="window.location = 'alerts.html'"
+        >
+          <i class="fas fa-bell"></i>
+          <span class="badge">5</span>
+        </div>
+        <div class="user-info">
+          <div class="user-name">Okie Sandra</div>
+          <div class="user-id">Premium Member</div>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <!-- Ticker Tape -->
+    <div class="ticker-tape">
+      <div class="ticker-content" id="tickerContent"></div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard">
+      <!-- Sidebar: Watchlist & Quick Actions -->
+      <aside class="sidebar glass-panel">
+        <div class="section-header">
+          <i class="fas fa-star" style="color: gold"></i> Watchlist
+        </div>
+        <div class="watchlist-container" id="watchlistContainer"></div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <div class="quick-action-title">Aksi Cepat</div>
+          <a href="advanced-orders.html" class="quick-action-btn">
+            <i class="fas fa-bolt"></i>
+            <span>Order Lanjutan</span>
+          </a>
+          <a href="simulator.html" class="quick-action-btn">
+            <i class="fas fa-flask"></i>
+            <span>Simulasi Trading</span>
+          </a>
+          <a href="news.html" class="quick-action-btn">
+            <i class="fas fa-newspaper"></i>
+            <span>Berita Pasar</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Center Content -->
+      <main class="main-content">
+        <!-- AI Insight Banner -->
+        <div class="ai-insight-banner glass-panel">
+          <div class="ai-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="ai-content">
+            <div class="ai-label">Wawasan AI</div>
+            <div class="ai-message">
+              <strong>BBCA</strong> menunjukkan momentum bullish dengan
+              keyakinan 85%.
+              <span class="text-buy">Potensi kenaikan +5.2%</span>
+            </div>
+          </div>
+          <a href="ai-predictions.html" class="btn-sm btn-accent"
+            >Lihat Semua Prediksi</a
+          >
+        </div>
+
+        <!-- Chart Section -->
+        <section class="chart-area glass-panel">
+          <div class="chart-header">
+            <div class="chart-info">
+              <div class="chart-symbol-group">
+                <div class="symbol-icon stocks">S</div>
+                <div>
+                  <span class="chart-symbol">BBCA</span>
+                  <span class="chart-name">Bank Central Asia Tbk</span>
+                </div>
+              </div>
+              <div class="chart-price-group">
+                <span class="current-price stock-current-price">9,850</span>
+                <span class="price-change text-buy">+125 (+1.28%)</span>
+              </div>
+            </div>
+            <div class="chart-controls">
+              <div class="timeframe-btns">
+                <button class="timeframe-btn" data-tf="1D">1D</button>
+                <button class="timeframe-btn" data-tf="1W">1W</button>
+                <button class="timeframe-btn active" data-tf="1M">1M</button>
+                <button class="timeframe-btn" data-tf="3M">3M</button>
+                <button class="timeframe-btn" data-tf="1Y">1Y</button>
+              </div>
+              <div class="chart-type-btns">
+                <button
+                  class="chart-type-btn active"
+                  data-type="line"
+                  title="Line Chart"
+                >
+                  <i class="fas fa-chart-line"></i>
+                </button>
+                <button
+                  class="chart-type-btn"
+                  data-type="candle"
+                  title="Candlestick"
+                >
+                  <i class="fas fa-chart-bar"></i>
+                </button>
+                <button
+                  class="chart-type-btn"
+                  data-type="bar"
+                  title="Bar Chart"
+                >
+                  <i class="fas fa-grip-lines"></i>
+                </button>
+              </div>
+              <button
+                id="chart-play-btn"
+                class="chart-play-btn"
+                title="Play/Pause Animation"
+              >
+                <i class="fas fa-pause"></i>
+              </button>
+            </div>
+          </div>
+          <div id="stock-chart" class="chart-canvas-container">
+            <canvas></canvas>
+          </div>
+        </section>
+
+        <!-- Bottom Panels Grid -->
+        <div class="bottom-grid">
+          <!-- Portfolio Summary -->
+          <section class="portfolio-section glass-panel">
+            <div class="section-header">
+              <div class="tab-group">
+                <span class="tab active">Portofolio</span>
+                <span class="tab"
+                  >Order Terbuka <span class="tab-badge">2</span></span
+                >
+                <span class="tab">Riwayat</span>
+              </div>
+              <a href="portfolio.html" class="btn-sm"
+                >Portofolio Lengkap <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Saham</th>
+                    <th>Hrg Rata2</th>
+                    <th>Terakhir</th>
+                    <th>Lot</th>
+                    <th>P/L</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="stock-cell">
+                        <div class="symbol-icon stocks mini">S</div>
+                        <strong>BBCA</strong>
+                      </div>
+                    </td>
+                    <td>9,200</td>
+                    <td class="live-price">9,850</td>
+                    <td>50</td>
+                    <td class="text-buy">+3.25M</td>
+                    <td class="text-buy">+7.06%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="stock-cell">
+                        <div class="symbol-icon stocks mini">S</div>
+                        <strong>GOTO</strong>
+                      </div>
+                    </td>
+                    <td>92</td>
+                    <td class="live-price">84</td>
+                    <td>1,000</td>
+                    <td class="text-sell">-800K</td>
+                    <td class="text-sell">-8.70%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="stock-cell">
+                        <div class="symbol-icon stocks mini">S</div>
+                        <strong>UNTR</strong>
+                      </div>
+                    </td>
+                    <td>22,500</td>
+                    <td class="live-price">23,000</td>
+                    <td>10</td>
+                    <td class="text-buy">+500K</td>
+                    <td class="text-buy">+2.22%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="portfolio-footer">
+              <div class="footer-stat">
+                <span class="stat-label">Total Nilai</span>
+                <span class="stat-value">Rp 125,850,000</span>
+              </div>
+              <div class="footer-stat">
+                <span class="stat-label">P/L Hari Ini</span>
+                <span class="stat-value text-buy">+Rp 2,950,000 (+2.4%)</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Right Panel: Order & Market Data -->
+      <aside class="right-panel">
+        <!-- Order Book -->
+        <div class="order-book-panel glass-panel">
+          <div class="section-header">Order Book</div>
+          <div id="order-book" class="order-book-container"></div>
+        </div>
+
+        <!-- Order Entry -->
+        <div class="order-entry glass-panel">
+          <div class="tabs">
+            <div class="tab active-buy">Beli</div>
+            <div class="tab">Jual</div>
+          </div>
+
+          <div class="balance-row">
+            <span>Buying Power</span>
+            <span class="balance-value">Rp 45,200,000</span>
+          </div>
+
+          <div class="form-group">
+            <label>Harga (Rp)</label>
+            <div class="price-input-group">
+              <button class="input-btn"><i class="fas fa-minus"></i></button>
+              <input type="number" class="form-control" value="9850" />
+              <button class="input-btn"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Lot</label>
+            <div class="price-input-group">
+              <button class="input-btn"><i class="fas fa-minus"></i></button>
+              <input type="number" class="form-control" value="10" />
+              <button class="input-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="lot-shortcuts">
+              <button class="lot-btn">25%</button>
+              <button class="lot-btn">50%</button>
+              <button class="lot-btn">75%</button>
+              <button class="lot-btn">Max</button>
+            </div>
+          </div>
+
+          <div class="order-summary-mini">
+            <div class="summary-row">
+              <span>Nilai</span>
+              <span>Rp 9,850,000</span>
+            </div>
+            <div class="summary-row">
+              <span>Biaya (0.15%)</span>
+              <span>Rp 14,775</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span>Rp 9,864,775</span>
+            </div>
+          </div>
+
+          <button class="btn-order btn-buy-action">
+            <i class="fas fa-check"></i> Beli BBCA
+          </button>
+
+          <a href="advanced-orders.html" class="advanced-link">
+            <i class="fas fa-cog"></i> Jenis Order Lanjutan
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Feature Navigation Footer -->
+    <footer class="features-footer glass-panel">
+      <a href="ai-predictions.html" class="feature-link">
+        <i class="fas fa-brain"></i>
+        <span>Prediksi AI</span>
+      </a>
+      <a href="portfolio.html" class="feature-link">
+        <i class="fas fa-chart-pie"></i>
+        <span>Portofolio</span>
+      </a>
+      <a href="social-trading.html" class="feature-link">
+        <i class="fas fa-users"></i>
+        <span>Social Trading</span>
+      </a>
+      <a href="simulator.html" class="feature-link">
+        <i class="fas fa-flask"></i>
+        <span>Simulator</span>
+      </a>
+      <a href="news.html" class="feature-link">
+        <i class="fas fa-newspaper"></i>
+        <span>Berita</span>
+      </a>
+      <a href="alerts.html" class="feature-link">
+        <i class="fas fa-bell"></i>
+        <span>Notifikasi</span>
+      </a>
+      <a href="education.html" class="feature-link">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Edukasi</span>
+      </a>
+      <a href="advanced-orders.html" class="feature-link">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Order</span>
+      </a>
+    </footer>
+
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="script.js"></script>
+    <style>
+      /* Enhanced Dashboard Styles */
+      .user-info {
+        text-align: right;
+      }
+
+      .user-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .user-id {
+        font-size: 0.7rem;
+        color: var(--accent-color);
+      }
+
+      .watchlist-container {
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .quick-actions {
+        border-top: 1px solid var(--glass-border);
+        padding: 15px;
+        margin-top: auto;
+      }
+
+      .quick-action-title {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .quick-action-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        color: var(--text-primary);
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: all 0.2s;
+        font-size: 0.85rem;
+      }
+
+      .quick-action-btn:hover {
+        background: var(--accent-color);
+      }
+
+      .quick-action-btn i {
+        width: 20px;
+        text-align: center;
+        color: var(--accent-color);
+      }
+
+      .quick-action-btn:hover i {
+        color: white;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      /* AI Insight Banner */
+      .ai-insight-banner {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.2),
+          rgba(59, 130, 246, 0.1)
+        );
+        border-left: 3px solid #8b5cf6;
+      }
+
+      .ai-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      .ai-content {
+        flex: 1;
+      }
+
+      .ai-label {
+        font-size: 0.7rem;
+        color: #a78bfa;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
+      .ai-message {
+        font-size: 0.9rem;
+      }
+
+      /* Chart Header */
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .chart-info {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .chart-symbol-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .symbol-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+      }
+
+      .symbol-icon.stocks {
+        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      }
+
+      .symbol-icon.mini {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        border-radius: 6px;
+      }
+
+      .chart-symbol {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: block;
+      }
+
+      .chart-name {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .chart-price-group {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .current-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .price-change {
+        font-size: 0.9rem;
+      }
+
+      .chart-controls {
+        display: flex;
+        gap: 15px;
+      }
+
+      .timeframe-btns,
+      .chart-type-btns {
+        display: flex;
+        gap: 5px;
+      }
+
+      .tf-btn,
+      .chart-btn {
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 6px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.2s;
+      }
+
+      .tf-btn.active,
+      .chart-btn.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+
+      .tf-btn:hover,
+      .chart-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Bottom Grid */
+      .bottom-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .tab-group {
+        display: flex;
+        gap: 20px;
+      }
+
+      .tab-group .tab {
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .tab-group .tab.active {
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .tab-badge {
+        background: var(--accent-color);
+        padding: 1px 6px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+      }
+
+      .stock-cell {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .portfolio-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 15px;
+        border-top: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .footer-stat {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      .stat-value {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      /* Right Panel */
+      .right-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 300px;
+      }
+
+      .balance-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+        color: var(--text-secondary);
+      }
+
+      .balance-value {
+        color: white;
+        font-weight: 600;
+      }
+
+      .price-input-group {
+        display: flex;
+        gap: 5px;
+      }
+
+      .price-input-group .form-control {
+        flex: 1;
+        text-align: center;
+      }
+
+      .input-btn {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .input-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .lot-shortcuts {
+        display: flex;
+        gap: 5px;
+        margin-top: 8px;
+      }
+
+      .lot-btn {
+        flex: 1;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 4px;
+        color: var(--text-secondary);
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+
+      .lot-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .order-summary-mini {
+        margin: 15px 0;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+      }
+
+      .order-summary-mini .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .order-summary-mini .summary-row.total {
+        border-top: 1px solid var(--glass-border);
+        margin-top: 5px;
+        padding-top: 10px;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .advanced-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      .advanced-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Features Footer */
+      .features-footer {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 20px;
+        margin: 16px;
+        border-radius: 12px;
+      }
+
+      .feature-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.2s;
+        font-size: 0.75rem;
+      }
+
+      .feature-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+      }
+
+      .feature-link i {
+        font-size: 1.2rem;
+      }
+
+      .feature-link:hover i {
+        color: var(--accent-color);
+      }
+
+      /* Dashboard Layout Override */
+      .dashboard {
+        display: flex;
+        gap: 16px;
+        padding: 16px;
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      .sidebar {
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chart-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portfolio-section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portfolio-section .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Chart Canvas Container */
+      .chart-canvas-container {
+        flex: 1;
+        width: 100%;
+        min-height: 350px;
+        background: #0a0a0a;
+        border-radius: 0 0 var(--radius) var(--radius);
+        position: relative;
+      }
+
+      .chart-canvas-container canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      /* Chart Controls */
+      .timeframe-btn,
+      .chart-type-btn {
+        padding: 8px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-family: var(--font-heading);
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .timeframe-btn.active,
+      .chart-type-btn.active {
+        background: var(--accent-color);
+        color: black;
+        border-color: var(--accent-color);
+      }
+
+      .timeframe-btn:hover:not(.active),
+      .chart-type-btn:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+      }
+
+      .chart-play-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        color: var(--accent-color);
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .chart-play-btn:hover {
+        background: var(--accent-color);
+        color: black;
+      }
+
+      /* Order Book Panel */
+      .order-book-panel {
+        display: flex;
+        flex-direction: column;
+        min-height: 320px;
+      }
+
+      .order-book-container {
+        flex: 1;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .orderbook-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+        padding: 10px 15px;
+        border-bottom: 1px solid var(--glass-border);
+        font-size: 0.75rem;
+        font-family: var(--font-heading);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .orderbook-header .col-vol {
+        text-align: center;
+      }
+
+      .orderbook-header .col-price {
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .orderbook-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        padding: 5px;
+      }
+
+      .orderbook-side {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .order-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        padding: 6px 10px;
+        position: relative;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-family: var(--font-body);
+        transition: background 0.3s ease;
+      }
+
+      .order-row .depth-bar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        border-radius: 4px;
+        z-index: 0;
+        transition: width 0.5s ease;
+      }
+
+      .order-row .order-vol,
+      .order-row .order-price {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bids .order-row {
+        text-align: right;
+      }
+
+      .bids .order-row .depth-bar {
+        right: 0;
+      }
+
+      .asks .order-row {
+        text-align: left;
+      }
+
+      .asks .order-row .depth-bar {
+        left: 0;
+      }
+
+      .order-row.new {
+        animation: orderFlash 0.5s ease;
+      }
+
+      .order-row.updated {
+        animation: orderPulse 0.3s ease;
+      }
+
+      @keyframes orderFlash {
+        0%,
+        50% {
+          background: rgba(255, 215, 0, 0.3);
+        }
+        100% {
+          background: transparent;
+        }
+      }
+
+      @keyframes orderPulse {
+        0% {
+          transform: scale(1.02);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .orderbook-spread {
+        padding: 10px 15px;
+        border-top: 1px solid var(--glass-border);
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        text-align: center;
+        font-family: var(--font-heading);
+      }
+
+      .order-vol {
+        color: var(--text-secondary);
+      }
+
+      .order-price {
+        font-weight: 600;
+      }
+    </style>
+    <script src="chart.js"></script>
+    <script src="orderbook.js"></script>
+    <script src="interactions.js"></script>
+  </body>
+</html>

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - Alerts & Notifications</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell active">
+          <i class="fas fa-bell"></i>
+          <span class="badge">7</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active">
+            <i class="fas fa-bell"></i>
+            <span>Semua Notifikasi</span>
+            <span class="menu-badge">7</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Notifikasi Harga</span>
+            <span class="menu-badge">3</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-robot"></i>
+            <span>Sinyal AI</span>
+            <span class="menu-badge">2</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-newspaper"></i>
+            <span>Berita</span>
+            <span class="menu-badge">1</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Notifikasi Portofolio</span>
+            <span class="menu-badge">1</span>
+          </a>
+          <a href="#" class="menu-item">
+            <i class="fas fa-cog"></i>
+            <span>Pengaturan</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Create Alert Button -->
+        <div class="alert-actions">
+          <button class="btn-accent btn-lg">
+            <i class="fas fa-plus"></i> Buat Notifikasi Baru
+          </button>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-bell"></i>
+            <span>Notifikasi Terbaru</span>
+            <button class="btn-sm">Tandai Semua Dibaca</button>
+          </div>
+          <div class="alerts-list">
+            <!-- AI Signal Alert -->
+            <div class="alert-item unread priority-high">
+              <div class="alert-icon ai">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div class="alert-content">
+                <div class="alert-header">
+                  <span class="alert-title">🚀 Sinyal Beli Kuat: BBCA</span>
+                  <span class="alert-priority high">TINGGI</span>
+                </div>
+                <div class="alert-message">
+                  Model AI mendeteksi pola bullish kuat dengan tingkat
+                  kepercayaan 85%. Harga menembus resistensi di 9.800. Aksi yang
+                  disarankan: BELI dengan target 10.500.
+                </div>
+                <div class="alert-meta">
+                  <span class="alert-time"
+                    ><i class="fas fa-clock"></i> 5 menit yang lalu</span
+                  >
+                  <span class="alert-source">Mesin Prediksi AI</span>
+                </div>
+              </div>
+              <div class="alert-actions-mini">
+                <button class="btn-sm btn-accent">Trading Sekarang</button>
+                <button class="btn-sm">Tutup</button>
+              </div>
+            </div>
+
+            <!-- Price Alert -->
+            <div class="alert-item unread priority-medium">
+              <div class="alert-icon price">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="alert-content">
+                <div class="alert-header">
+                  <span class="alert-title">Target Harga Tercapai: BTC</span>
+                  <span class="alert-priority medium">SEDANG</span>
+                </div>
+                <div class="alert-message">
+                  Bitcoin telah mencapai target harga Anda di $67.000. Harga
+                  saat ini: $67.420 (+2,5% dari level notifikasi).
+                </div>
+                <div class="alert-meta">
+                  <span class="alert-time"
+                    ><i class="fas fa-clock"></i> 15 menit yang lalu</span
+                  >
+                  <span class="alert-source">Notifikasi Harga</span>
+                </div>
+              </div>
+              <div class="alert-actions-mini">
+                <button class="btn-sm">Lihat Grafik</button>
+                <button class="btn-sm">Tutup</button>
+              </div>
+            </div>
+
+            <!-- News Alert -->
+            <div class="alert-item unread priority-high">
+              <div class="alert-icon news">
+                <i class="fas fa-newspaper"></i>
+              </div>
+              <div class="alert-content">
+                <div class="alert-header">
+                  <span class="alert-title"
+                    >📰 Terkini: GOTO Umumkan Hasil Q4</span
+                  >
+                  <span class="alert-priority high">TINGGI</span>
+                </div>
+                <div class="alert-message">
+                  Grup GoTo melaporkan pendapatan Q4 meleset dengan penurunan 8%
+                  YoY. Saham diperkirakan dibuka lebih rendah. Sentimen: NEGATIF
+                  (-0,72).
+                </div>
+                <div class="alert-meta">
+                  <span class="alert-time"
+                    ><i class="fas fa-clock"></i> 1 jam yang lalu</span
+                  >
+                  <span class="alert-source">Mesin Sentimen Berita</span>
+                </div>
+              </div>
+              <div class="alert-actions-mini">
+                <button class="btn-sm">Baca Selengkapnya</button>
+                <button class="btn-sm">Tutup</button>
+              </div>
+            </div>
+
+            <!-- Portfolio Alert -->
+            <div class="alert-item priority-warning">
+              <div class="alert-icon portfolio">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <div class="alert-content">
+                <div class="alert-header">
+                  <span class="alert-title"
+                    >⚠️ Peringatan Konsentrasi Portofolio</span
+                  >
+                  <span class="alert-priority warning">PERINGATAN</span>
+                </div>
+                <div class="alert-message">
+                  Alokasi BBCA telah melebihi 30% dari portofolio Anda (saat ini
+                  32%). Pertimbangkan rebalancing untuk mengurangi risiko
+                  konsentrasi.
+                </div>
+                <div class="alert-meta">
+                  <span class="alert-time"
+                    ><i class="fas fa-clock"></i> 2 jam yang lalu</span
+                  >
+                  <span class="alert-source">Manajer Risiko</span>
+                </div>
+              </div>
+              <div class="alert-actions-mini">
+                <button class="btn-sm">Rebalancing</button>
+                <button class="btn-sm">Tutup</button>
+              </div>
+            </div>
+
+            <!-- Technical Alert -->
+            <div class="alert-item">
+              <div class="alert-icon technical">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="alert-content">
+                <div class="alert-header">
+                  <span class="alert-title">RSI Oversold: ANTM</span>
+                  <span class="alert-priority low">RENDAH</span>
+                </div>
+                <div class="alert-message">
+                  RSI ANTM turun di bawah 30 (saat ini 28,5), mengindikasikan
+                  kondisi oversold potensial. Tingkat rebound historis: 72%.
+                </div>
+                <div class="alert-meta">
+                  <span class="alert-time"
+                    ><i class="fas fa-clock"></i> 4 jam yang lalu</span
+                  >
+                  <span class="alert-source">Pemindai Teknikal</span>
+                </div>
+              </div>
+              <div class="alert-actions-mini">
+                <button class="btn-sm">Lihat Grafik</button>
+                <button class="btn-sm">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Alert Rules -->
+        <div class="content-section glass-panel">
+          <div class="section-header">
+            <i class="fas fa-cog"></i>
+            <span>Aturan Notifikasi Aktif</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table rules-table">
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Tipe</th>
+                  <th>Kondisi</th>
+                  <th>Kanal</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Target Harga BTC</td>
+                  <td><span class="type-badge price">Harga</span></td>
+                  <td>BTC ≥ $70,000</td>
+                  <td>
+                    <i class="fas fa-mobile-alt" title="Push"></i>
+                    <i class="fas fa-envelope" title="Email"></i>
+                  </td>
+                  <td><span class="status-badge active">Aktif</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Stop Loss GOTO</td>
+                  <td><span class="type-badge price">Harga</span></td>
+                  <td>GOTO ≤ 80</td>
+                  <td>
+                    <i class="fas fa-mobile-alt" title="Push"></i>
+                    <i class="fas fa-sms" title="SMS"></i>
+                  </td>
+                  <td><span class="status-badge active">Aktif</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ringkasan P/L Harian</td>
+                  <td><span class="type-badge portfolio">Portofolio</span></td>
+                  <td>Setiap hari jam 16:00</td>
+                  <td>
+                    <i class="fas fa-envelope" title="Email"></i>
+                  </td>
+                  <td><span class="status-badge active">Aktif</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Sinyal Beli AI</td>
+                  <td><span class="type-badge ai">AI</span></td>
+                  <td>Beli Kuat, Kepercayaan ≥ 80%</td>
+                  <td>
+                    <i class="fas fa-mobile-alt" title="Push"></i>
+                    <i class="fas fa-envelope" title="Email"></i>
+                    <i class="fab fa-telegram" title="Telegram"></i>
+                  </td>
+                  <td><span class="status-badge active">Aktif</span></td>
+                  <td>
+                    <button class="btn-action">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn-action">
+                      <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="btn-action text-sell">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+  </body>
+</html>

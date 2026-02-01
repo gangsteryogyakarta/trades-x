@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8000:80"
+      - "8080:8080"
+    volumes:
+      - ./:/var/www
+      - ./storage:/var/www/storage
+      - ./bootstrap/cache:/var/www/bootstrap/cache
+    # env_file: .env # Removed for Portainer/Git compatibility (variables are injected via Portainer UI)
+    depends_on:
+      - db
+      - redis
+    networks:
+      - trades-net
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-trades_x}
+      MYSQL_USER: ${DB_USERNAME:-root}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password_rahasia}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password_rahasia}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - trades-net
+
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - trades-net
+
+networks:
+  trades-net:
+    driver: bridge
+
+volumes:
+  db_data:

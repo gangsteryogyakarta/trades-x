@@ -1,0 +1,945 @@
+/**
+ * TradeX Interactive Components - CSS Styles
+ * Modals, Tooltips, Toasts, Animations, States
+ */
+
+/* ============================================
+   CSS VARIABLES FOR INTERACTIONS
+   ============================================ */
+:root {
+    --modal-bg: rgba(5, 5, 5, 0.95);
+    --toast-success: #00e676;
+    --toast-error: #ff1744;
+    --toast-warning: #FFD700;
+    --toast-info: #ffffff;
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
+}
+
+/* ============================================
+   TOOLTIP STYLES
+   ============================================ */
+.tx-tooltip {
+    position: fixed;
+    z-index: 10000;
+    padding: 8px 12px;
+    background: #000;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    max-width: 250px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.tx-tooltip.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tx-tooltip-arrow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border: 1px solid var(--accent-color);
+    transform: rotate(45deg);
+}
+
+.tx-tooltip-top .tx-tooltip-arrow {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -4px;
+    border-top: 0;
+    border-left: 0;
+}
+
+.tx-tooltip-bottom .tx-tooltip-arrow {
+    top: -5px;
+    left: 50%;
+    margin-left: -4px;
+    border-bottom: 0;
+    border-right: 0;
+}
+
+/* ============================================
+   MODAL STYLES
+   ============================================ */
+#tx-modal-container {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+#tx-modal-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tx-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.tx-modal {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    background: var(--modal-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    transform: scale(0.9) translateY(20px);
+    transition: transform var(--transition-normal);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#tx-modal-container.active .tx-modal {
+    transform: scale(1) translateY(0);
+}
+
+.tx-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.tx-modal-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+}
+
+.tx-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.tx-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.tx-modal-body {
+    padding: 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.tx-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 25px;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.tx-modal-message {
+    text-align: center;
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.tx-modal-message.success {
+    color: var(--toast-success);
+}
+
+.tx-modal-message.error {
+    color: var(--toast-error);
+}
+
+/* Modal Content Styles */
+.stock-detail-modal .stock-header-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stock-detail-modal .stock-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: var(--accent-color);
+    color: black;
+}
+
+.stock-detail-modal .stock-info {
+    flex: 1;
+}
+
+.stock-detail-modal .stock-symbol {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.stock-detail-modal .stock-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.stock-detail-modal .stock-price {
+    text-align: right;
+}
+
+.stock-detail-modal .price-current {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stock-detail-modal .price-change {
+    font-size: 0.9rem;
+}
+
+.stock-detail-modal .price-change.positive { color: var(--buy-color); }
+.stock-detail-modal .price-change.negative { color: var(--sell-color); }
+
+.stock-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stock-stats-grid .stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stock-stats-grid .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.stock-stats-grid .stat-value {
+    font-weight: 600;
+}
+
+.ai-signal-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    border-radius: 10px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.ai-signal-box i {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+
+.ai-signal-box .confidence {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Trade Confirm Modal */
+.trade-confirm-modal .trade-action {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.trade-confirm-modal .trade-action.buy {
+    background: var(--buy-bg);
+    color: var(--buy-color);
+}
+
+.trade-confirm-modal .trade-action.sell {
+    background: var(--sell-bg);
+    color: var(--sell-color);
+}
+
+.trade-confirm-modal .trade-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.trade-confirm-modal .trade-row.total {
+    border-top: 2px solid var(--glass-border);
+    border-bottom: none;
+    margin-top: 10px;
+    padding-top: 15px;
+    font-size: 1.1rem;
+}
+
+/* Trader Profile Modal */
+.trader-profile-modal .trader-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.trader-avatar-lg {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+}
+
+.trader-profile-modal .trader-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.trader-profile-modal .trader-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.trader-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.trader-stats-grid .stat-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.trader-stats-grid .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.trader-stats-grid .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.trader-bio h4, .recent-trades h4 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.trader-bio p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.mini-trades-list .mini-trade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+}
+
+.mini-trade .side {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.mini-trade .side.buy { background: var(--buy-bg); color: var(--buy-color); }
+.mini-trade .side.sell { background: var(--sell-bg); color: var(--sell-color); }
+
+/* Alert Create Modal */
+.alert-create-modal .form-group {
+    margin-bottom: 15px;
+}
+
+.alert-create-modal .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+}
+
+.channel-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-color);
+}
+
+/* Course Detail Modal */
+.course-detail-modal .course-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.course-detail-modal .course-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: black;
+}
+
+.course-detail-modal .course-meta {
+    display: flex;
+    gap: 15px;
+}
+
+.course-detail-modal .course-level {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.course-level.beginner { background: #00e676; color: black; }
+.course-level.intermediate { background: var(--accent-color); color: black; }
+.course-level.advanced { background: #ff1744; color: white; }
+
+.course-detail-modal .course-duration {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.course-detail-modal .course-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.course-detail-modal .course-description {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.curriculum-list {
+    list-style: none;
+    padding: 0;
+}
+
+.curriculum-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.9rem;
+}
+
+.curriculum-list li i {
+    color: var(--accent-color);
+}
+
+/* News Detail Modal */
+.news-detail-modal .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.news-detail-modal .news-source {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.news-detail-modal .news-time {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.news-detail-modal .sentiment-tag {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.sentiment-tag.bullish { background: var(--buy-bg); color: var(--buy-color); }
+.sentiment-tag.bearish { background: var(--sell-bg); color: var(--sell-color); }
+.sentiment-tag.neutral { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
+
+.news-detail-modal .news-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.news-detail-modal .news-body {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.news-impact-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.impact-list .impact-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.impact-item.positive span:last-child { color: var(--buy-color); }
+.impact-item.negative span:last-child { color: var(--sell-color); }
+
+/* ============================================
+   TOAST NOTIFICATION STYLES
+   ============================================ */
+#tx-toast-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.tx-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: #000;
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    transform: translateX(120%);
+    transition: transform var(--transition-normal);
+    pointer-events: auto;
+    min-width: 280px;
+    max-width: 400px;
+}
+
+.tx-toast.active {
+    transform: translateX(0);
+}
+
+.tx-toast i {
+    font-size: 1.2rem;
+}
+
+.tx-toast span {
+    flex: 1;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.tx-toast .toast-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color var(--transition-fast);
+}
+
+.tx-toast .toast-close:hover {
+    color: white;
+}
+
+.tx-toast-success { border-left: 3px solid var(--toast-success); }
+.tx-toast-success i { color: var(--toast-success); }
+
+.tx-toast-error { border-left: 3px solid var(--toast-error); }
+.tx-toast-error i { color: var(--toast-error); }
+
+.tx-toast-warning { border-left: 3px solid var(--toast-warning); }
+.tx-toast-warning i { color: var(--toast-warning); }
+
+.tx-toast-info { border-left: 3px solid var(--toast-info); }
+.tx-toast-info i { color: var(--toast-info); }
+
+/* ============================================
+   RIPPLE EFFECT
+   ============================================ */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   BUTTON STATES & HOVER EFFECTS
+   ============================================ */
+button, .btn-sm, .btn-accent, .btn-order, .btn-action, .btn-copy {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+button:not(:disabled):hover,
+.btn-sm:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:not(:disabled):active,
+.btn-sm:not(:disabled):active {
+    transform: translateY(0);
+}
+
+button:disabled,
+.btn-sm:disabled,
+.btn-action.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn-buy {
+    background: var(--buy-color);
+    border-color: var(--buy-color);
+    color: white;
+}
+
+.btn-sell {
+    background: var(--sell-color);
+    border-color: var(--sell-color);
+    color: white;
+}
+
+.btn-copy.copied {
+    background: var(--buy-color) !important;
+    transform: scale(1.02);
+}
+
+/* ============================================
+   INTERACTIVE CARD HOVER STATES
+   ============================================ */
+.glass-panel {
+    transition: all var(--transition-normal);
+}
+
+.summary-card:hover,
+.trader-card:hover,
+.course-card:hover,
+.news-item:hover,
+.alert-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-color);
+}
+
+.watchlist-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+.menu-item:hover,
+.quick-action-btn:hover {
+    transform: translateX(5px);
+}
+
+/* Clickable rows */
+.data-table tbody tr {
+    transition: background var(--transition-fast);
+    cursor: pointer;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   FORM ELEMENT STATES
+   ============================================ */
+.form-control {
+    transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
+}
+
+.form-control.error {
+    border-color: var(--sell-color);
+    box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.2);
+}
+
+.form-group.focused label {
+    color: var(--accent-color);
+}
+
+.quick-btn.active,
+.lot-btn.active {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid var(--glass-border);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+.animate-ready {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.animate-in {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flash-up {
+    animation: flashGreen 0.5s ease;
+}
+
+.flash-down {
+    animation: flashRed 0.5s ease;
+}
+
+@keyframes flashGreen {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(0, 200, 83, 0.3); }
+}
+
+@keyframes flashRed {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(255, 82, 82, 0.3); }
+}
+
+/* Stagger animations */
+.trader-card:nth-child(1) { animation-delay: 0ms; }
+.trader-card:nth-child(2) { animation-delay: 100ms; }
+.trader-card:nth-child(3) { animation-delay: 200ms; }
+
+.course-card:nth-child(1) { animation-delay: 0ms; }
+.course-card:nth-child(2) { animation-delay: 75ms; }
+.course-card:nth-child(3) { animation-delay: 150ms; }
+.course-card:nth-child(4) { animation-delay: 225ms; }
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+.skeleton {
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.05) 25%, 
+        rgba(255,255,255,0.1) 50%, 
+        rgba(255,255,255,0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   FOCUS VISIBLE FOR ACCESSIBILITY
+   ============================================ */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.menu-item:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   ACTIVE/SELECTED STATES
+   ============================================ */
+.menu-item.active,
+.tab.active,
+.type-tab.active,
+.tf-btn.active,
+.chart-btn.active {
+    position: relative;
+}
+
+.menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: var(--accent-color);
+    border-radius: 0 3px 3px 0;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state h4 {
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .tx-modal {
+        width: 95%;
+        max-height: 90vh;
+        margin: 20px;
+    }
+    
+    #tx-toast-container {
+        left: 10px;
+        right: 10px;
+    }
+    
+    .tx-toast {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .stock-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .trader-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

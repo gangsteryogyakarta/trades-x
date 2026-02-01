@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeX - AI Predictions</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+    `r`n
+    <link rel="stylesheet" href="interactions.css" />
+    <style>
+      /* Tab Panel Styles */
+      .tab-panel {
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="glass-panel"
+      style="border-radius: 0; border-top: 0; border-left: 0; border-right: 0"
+    >
+      <div class="brand">
+        <i class="fas fa-layer-group"></i> <span>TradeX</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="ai-predictions.html" class="active">Prediksi AI</a>
+        <a href="portfolio.html">Portofolio</a>
+        <a href="social-trading.html">Sosial</a>
+        <a href="education.html">Edukasi</a>
+      </nav>
+      <div
+        class="user-menu"
+        style="display: flex; align-items: center; gap: 15px"
+      >
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="avatar-circle"></div>
+      </div>
+    </header>
+
+    <div class="page-container">
+      <!-- Sidebar Navigation -->
+      <aside class="page-sidebar glass-panel">
+        <div class="sidebar-menu">
+          <a href="#" class="menu-item active" data-tab="prediksi">
+            <i class="fas fa-brain"></i>
+            <span>Prediksi AI</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="teknikal">
+            <i class="fas fa-chart-line"></i>
+            <span>Analisis Teknikal</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="sentimen">
+            <i class="fas fa-newspaper"></i>
+            <span>Analisis Sentimen</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="scanner">
+            <i class="fas fa-search-dollar"></i>
+            <span>Pemindai Pasar</span>
+          </a>
+          <a href="#" class="menu-item" data-tab="sinyal">
+            <i class="fas fa-robot"></i>
+            <span>Sinyal Trading</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="page-main">
+        <!-- Tab: Prediksi AI (Existing Content) -->
+        <div class="tab-panel active" data-panel="prediksi">
+          <!-- AI Summary Cards -->
+          <div class="ai-summary-row">
+            <div class="summary-card glass-panel">
+              <div class="card-icon bullish">
+                <i class="fas fa-arrow-trend-up"></i>
+              </div>
+              <div class="card-content">
+                <div class="card-label">Sentimen Pasar</div>
+                <div class="card-value text-buy">BULLISH</div>
+                <div class="card-sub">Keyakinan 78%</div>
+              </div>
+            </div>
+            <div class="summary-card glass-panel">
+              <div class="card-icon neutral">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="card-content">
+                <div class="card-label">Sinyal Aktif</div>
+                <div class="card-value">24</div>
+                <div class="card-sub">12 beli, 8 jual, 4 tahan</div>
+              </div>
+            </div>
+            <div class="summary-card glass-panel">
+              <div class="card-icon success">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div class="card-content">
+                <div class="card-label">Tingkat Akurasi</div>
+                <div class="card-value">72.5%</div>
+                <div class="card-sub">30 hari terakhir</div>
+              </div>
+            </div>
+            <div class="summary-card glass-panel">
+              <div class="card-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="card-content">
+                <div class="card-label">Peringatan Risiko</div>
+                <div class="card-value">3</div>
+                <div class="card-sub">Volatilitas tinggi terdeteksi</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Predictions Table -->
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <div class="header-left">
+                <i class="fas fa-robot"></i>
+                <span>Prediksi Harga AI</span>
+              </div>
+              <div class="header-actions">
+                <select class="filter-select">
+                  <option>Semua Aset</option>
+                  <option>Saham</option>
+                  <option>Kripto</option>
+                  <option>Komoditas</option>
+                </select>
+                <select class="filter-select">
+                  <option>Keyakinan Tinggi</option>
+                  <option>Semua Keyakinan</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table predictions-table">
+                <thead>
+                  <tr>
+                    <th>Aset</th>
+                    <th>Harga Saat Ini</th>
+                    <th>Prediksi</th>
+                    <th>Target (1M)</th>
+                    <th>Keyakinan</th>
+                    <th>Kekuatan Sinyal</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon stocks">S</div>
+                        <div>
+                          <div class="asset-symbol">BBCA</div>
+                          <div class="asset-name">Bank Central Asia</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>9,850</td>
+                    <td>
+                      <span class="prediction-badge up"
+                        ><i class="fas fa-arrow-up"></i> NAIK</span
+                      >
+                    </td>
+                    <td class="text-buy">10,200 - 10,500</td>
+                    <td>
+                      <div class="confidence-bar">
+                        <div
+                          class="confidence-fill high"
+                          style="width: 85%"
+                        ></div>
+                      </div>
+                      <span class="confidence-text">85%</span>
+                    </td>
+                    <td>
+                      <span class="signal-badge strong-buy">BELI KUAT</span>
+                    </td>
+                    <td>
+                      <button class="btn-action">
+                        <i class="fas fa-chart-line"></i>
+                      </button>
+                      <button class="btn-action">
+                        <i class="fas fa-shopping-cart"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon crypto">₿</div>
+                        <div>
+                          <div class="asset-symbol">BTC</div>
+                          <div class="asset-name">Bitcoin</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>$67,420</td>
+                    <td>
+                      <span class="prediction-badge up"
+                        ><i class="fas fa-arrow-up"></i> NAIK</span
+                      >
+                    </td>
+                    <td class="text-buy">$70,000 - $72,500</td>
+                    <td>
+                      <div class="confidence-bar">
+                        <div
+                          class="confidence-fill high"
+                          style="width: 78%"
+                        ></div>
+                      </div>
+                      <span class="confidence-text">78%</span>
+                    </td>
+                    <td><span class="signal-badge buy">BELI</span></td>
+                    <td>
+                      <button class="btn-action">
+                        <i class="fas fa-chart-line"></i>
+                      </button>
+                      <button class="btn-action">
+                        <i class="fas fa-shopping-cart"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon commodity">Au</div>
+                        <div>
+                          <div class="asset-symbol">GOLD</div>
+                          <div class="asset-name">Gold Spot</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>$2,045</td>
+                    <td>
+                      <span class="prediction-badge sideways"
+                        ><i class="fas fa-arrows-left-right"></i> TAHAN</span
+                      >
+                    </td>
+                    <td>$2,030 - $2,060</td>
+                    <td>
+                      <div class="confidence-bar">
+                        <div
+                          class="confidence-fill medium"
+                          style="width: 62%"
+                        ></div>
+                      </div>
+                      <span class="confidence-text">62%</span>
+                    </td>
+                    <td><span class="signal-badge hold">TAHAN</span></td>
+                    <td>
+                      <button class="btn-action">
+                        <i class="fas fa-chart-line"></i>
+                      </button>
+                      <button class="btn-action">
+                        <i class="fas fa-shopping-cart"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon stocks">S</div>
+                        <div>
+                          <div class="asset-symbol">GOTO</div>
+                          <div class="asset-name">GoTo Gojek Tokopedia</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>84</td>
+                    <td>
+                      <span class="prediction-badge down"
+                        ><i class="fas fa-arrow-down"></i> TURUN</span
+                      >
+                    </td>
+                    <td class="text-sell">75 - 80</td>
+                    <td>
+                      <div class="confidence-bar">
+                        <div
+                          class="confidence-fill medium"
+                          style="width: 68%"
+                        ></div>
+                      </div>
+                      <span class="confidence-text">68%</span>
+                    </td>
+                    <td><span class="signal-badge sell">JUAL</span></td>
+                    <td>
+                      <button class="btn-action">
+                        <i class="fas fa-chart-line"></i>
+                      </button>
+                      <button class="btn-action text-sell">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="asset-cell">
+                        <div class="asset-icon crypto">Ξ</div>
+                        <div>
+                          <div class="asset-symbol">ETH</div>
+                          <div class="asset-name">Ethereum</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>$3,280</td>
+                    <td>
+                      <span class="prediction-badge up"
+                        ><i class="fas fa-arrow-up"></i> NAIK</span
+                      >
+                    </td>
+                    <td class="text-buy">$3,500 - $3,700</td>
+                    <td>
+                      <div class="confidence-bar">
+                        <div
+                          class="confidence-fill high"
+                          style="width: 82%"
+                        ></div>
+                      </div>
+                      <span class="confidence-text">82%</span>
+                    </td>
+                    <td>
+                      <span class="signal-badge strong-buy">BELI KUAT</span>
+                    </td>
+                    <td>
+                      <button class="btn-action">
+                        <i class="fas fa-chart-line"></i>
+                      </button>
+                      <button class="btn-action">
+                        <i class="fas fa-shopping-cart"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AI Insights Panel -->
+          <div class="insights-grid">
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-lightbulb"></i>
+                <span>Wawasan AI Terbaru</span>
+              </div>
+              <div class="insights-list">
+                <div class="insight-item">
+                  <div class="insight-icon bullish">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <div class="insight-title">BBCA Menembus Resistensi</div>
+                    <div class="insight-desc">
+                      Analisis teknikal menunjukkan BBCA menembus di atas
+                      resistensi kunci di 9,800. Konfirmasi volume menunjukkan
+                      kelanjutan tren.
+                    </div>
+                    <div class="insight-meta">
+                      <span><i class="fas fa-clock"></i> 2 jam yang lalu</span>
+                      <span class="text-buy">potensi +3.5%</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <div class="insight-icon warning">
+                    <i class="fas fa-exclamation-circle"></i>
+                  </div>
+                  <div class="insight-content">
+                    <div class="insight-title">Peringatan Volatilitas BTC</div>
+                    <div class="insight-desc">
+                      Peningkatan volatilitas diperkirakan karena pertemuan FOMC
+                      mendatang. Pertimbangkan untuk menyesuaikan ukuran posisi.
+                    </div>
+                    <div class="insight-meta">
+                      <span><i class="fas fa-clock"></i> 4 jam yang lalu</span>
+                      <span class="text-warning">Risiko Tinggi</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-item">
+                  <div class="insight-icon bearish">
+                    <i class="fas fa-newspaper"></i>
+                  </div>
+                  <div class="insight-content">
+                    <div class="insight-title">Sentimen Negatif GOTO</div>
+                    <div class="insight-desc">
+                      Sentimen media sosial untuk GOTO menurun 45% dalam 24 jam
+                      terakhir setelah laporan pendapatan yang tidak sesuai
+                      target.
+                    </div>
+                    <div class="insight-meta">
+                      <span><i class="fas fa-clock"></i> 5 jam yang lalu</span>
+                      <span class="text-sell">potensi -8%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-section glass-panel">
+              <div class="section-header">
+                <i class="fas fa-chart-pie"></i>
+                <span>Akurasi Prediksi</span>
+              </div>
+              <div class="accuracy-chart">
+                <div class="donut-chart">
+                  <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path
+                      class="circle-bg"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      class="circle"
+                      stroke-dasharray="72.5, 100"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <text x="18" y="20.35" class="percentage">72.5%</text>
+                  </svg>
+                </div>
+                <div class="accuracy-stats">
+                  <div class="stat-row">
+                    <span class="stat-label"
+                      ><i class="fas fa-check text-buy"></i> Benar</span
+                    >
+                    <span class="stat-value">145</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label"
+                      ><i class="fas fa-times text-sell"></i> Meleset</span
+                    >
+                    <span class="stat-value">55</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label"
+                      ><i class="fas fa-clock"></i> Menunggu</span
+                    >
+                    <span class="stat-value">24</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Analisis Teknikal -->
+        <div class="tab-panel" data-panel="teknikal">
+          <div class="section-header">
+            <div class="header-left">
+              <i class="fas fa-chart-area"></i>
+              <span>Analisis Teknikal Multi-Indikator</span>
+            </div>
+            <div class="header-actions">
+              <select class="filter-select">
+                <option>BTC/USD</option>
+                <option>BBCA.JK</option>
+                <option>XAU/USD</option>
+              </select>
+              <button class="btn-sm active">1H</button>
+              <button class="btn-sm">4H</button>
+              <button class="btn-sm">1D</button>
+            </div>
+          </div>
+
+                "
+              ></div>
+            </div>
+          </div>
+
+          <script>
+            class TechnicalChart {
+              constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext("2d");
+                this.data = [];
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.hoverIndex = -1;
+                this.init();
+              }
+
+              init() {
+                this.generateData();
+
+                // Resize Observer
+                this.resizeObserver = new ResizeObserver(() => this.resize());
+                this.resizeObserver.observe(this.canvas.parentElement);
+
+                // Event Listeners
+                this.canvas.addEventListener("mousemove", (e) =>
+                  this.handleMouseMove(e),
+                );
+                this.canvas.addEventListener("mouseleave", () => {
+                  this.hoverIndex = -1;
+                  document.getElementById("chartTooltip").style.display =
+                    "none";
+                  this.draw();
+                });
+
+                this.resize();
+                this.animate();
+              }
+
+              generateData() {
+                let price = 65000;
+                const count = 100;
+                for (let i = 0; i < count; i++) {
+                  const time = new Date();
+                  time.setMinutes(time.getMinutes() - (count - i) * 60);
+
+                  const open = price;
+                  const volatility = price * 0.005;
+                  const change = (Math.random() - 0.5) * volatility;
+                  const close = open + change;
+                  const high =
+                    Math.max(open, close) + Math.random() * volatility * 0.5;
+                  const low =
+                    Math.min(open, close) - Math.random() * volatility * 0.5;
+
+                  this.data.push({
+                    time: time,
+                    open,
+                    high,
+                    low,
+                    close,
+                  });
+
+                  price = close;
+                }
+              }
+
+              resize() {
+                const rect = this.canvas.parentElement.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+
+                this.canvas.width = rect.width * dpr;
+                this.canvas.height = rect.height * dpr;
+                this.ctx.scale(dpr, dpr);
+
+                this.width = rect.width;
+                this.height = rect.height;
+
+                this.draw();
+              }
+
+              handleMouseMove(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouseX = e.clientX - rect.left;
+                this.mouseY = e.clientY - rect.top;
+
+                const barWidth = this.width / this.data.length;
+                this.hoverIndex = Math.floor(this.mouseX / barWidth);
+
+                if (
+                  this.hoverIndex >= 0 &&
+                  this.hoverIndex < this.data.length
+                ) {
+                  const d = this.data[this.hoverIndex];
+                  const tooltip = document.getElementById("chartTooltip");
+                  tooltip.style.display = "block";
+                  tooltip.style.left = e.clientX - rect.left + 15 + "px";
+                  tooltip.style.top = e.clientY - rect.top + "px";
+
+                  const color = d.close >= d.open ? "#00e676" : "#ff5252";
+                  tooltip.innerHTML = `
+                            <div style="color: #aaa; margin-bottom: 4px;">${d.time.getHours()}:${d.time.getMinutes().toString().padStart(2, "0")}</div>
+                            <div>O: <span style="color:${color}">${d.open.toFixed(2)}</span></div>
+                            <div>H: <span style="color:${color}">${d.high.toFixed(2)}</span></div>
+                            <div>L: <span style="color:${color}">${d.low.toFixed(2)}</span></div>
+                            <div>C: <span style="color:${color}">${d.close.toFixed(2)}</span></div>
+                        `;
+                } else {
+                  document.getElementById("chartTooltip").style.display =
+                    "none";
+                }
+
+                this.draw();
+              }
+
+              draw() {
+                this.ctx.clearRect(0, 0, this.width, this.height);
+
+                // Draw Grid
+                this.ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+                this.ctx.lineWidth = 1;
+                this.ctx.beginPath();
+                for (let i = 0; i < this.height; i += 50) {
+                  this.ctx.moveTo(0, i);
+                  this.ctx.lineTo(this.width, i);
+                }
+                this.ctx.stroke();
+
+                // Calculate range
+                let min = Infinity,
+                  max = -Infinity;
+                this.data.forEach((d) => {
+                  if (d.low < min) min = d.low;
+                  if (d.high > max) max = d.high;
+                });
+                const range = max - min;
+                const padding = range * 0.1;
+                min -= padding;
+                max += padding;
+
+                const getY = (val) =>
+                  this.height - ((val - min) / (max - min)) * this.height;
+
+                const barWidth = this.width / this.data.length;
+                const gap = 2; // px
+
+                // Draw Candles
+                this.data.forEach((d, i) => {
+                  const x = i * barWidth;
+                  const w = Math.max(1, barWidth - gap);
+
+                  const yOpen = getY(d.open);
+                  const yClose = getY(d.close);
+                  const yHigh = getY(d.high);
+                  const yLow = getY(d.low);
+
+                  const isGreen = d.close >= d.open;
+                  this.ctx.fillStyle = isGreen ? "#00e676" : "#ff5252";
+                  this.ctx.strokeStyle = this.ctx.fillStyle;
+
+                  // Wick
+                  this.ctx.beginPath();
+                  this.ctx.moveTo(x + w / 2, yHigh);
+                  this.ctx.lineTo(x + w / 2, yLow);
+                  this.ctx.stroke();
+
+                  // Body
+                  const h = Math.max(1, Math.abs(yClose - yOpen));
+                  this.ctx.fillRect(x, Math.min(yOpen, yClose), w, h);
+                });
+
+                // Draw Crosshair
+                if (this.hoverIndex >= 0) {
+                  const x = this.hoverIndex * barWidth + barWidth / 2;
+                  this.ctx.setLineDash([5, 5]);
+                  this.ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+                  this.ctx.beginPath();
+                  this.ctx.moveTo(x, 0);
+                  this.ctx.lineTo(x, this.height);
+                  this.ctx.moveTo(0, this.mouseY);
+                  this.ctx.lineTo(this.width, this.mouseY);
+                  this.ctx.stroke();
+                  this.ctx.setLineDash([]);
+                }
+              }
+
+              animate() {
+                // Optional: Live update simulation
+                if (Math.random() > 0.95) {
+                  const last = this.data[this.data.length - 1];
+                  // Update last candle
+                  const change = (Math.random() - 0.5) * (last.close * 0.001);
+                  last.close += change;
+                  if (last.close > last.high) last.high = last.close;
+                  if (last.close < last.low) last.low = last.close;
+                  this.draw();
+                }
+                requestAnimationFrame(() => this.animate());
+              }
+            }
+
+            // Initialize chart when Tech tab is shown
+            const techObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (
+                  mutation.target.classList.contains("active") &&
+                  mutation.target.getAttribute("data-panel") === "teknikal"
+                ) {
+                  if (!window.techChartInstance) {
+                    window.techChartInstance = new TechnicalChart("techChart");
+                  } else {
+                    window.techChartInstance.resize();
+                  }
+                }
+              });
+            });
+
+            const techTab = document.querySelector(
+              '.tab-panel[data-panel="teknikal"]',
+            );
+            if (techTab) {
+              techObserver.observe(techTab, {
+                attributes: true,
+                attributeFilter: ["class"],
+              });
+            }
+          </script>
+
+          <div class="content-section glass-panel" style="margin-top: 20px">
+            <div class="section-header">
+              <span>Indikator Utama</span>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Indikator</th>
+                    <th>Nilai</th>
+                    <th>Sinyal</th>
+                    <th>Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RSI (14)</td>
+                    <td>68.5</td>
+                    <td class="text-buy">Beli</td>
+                    <td>Mendekati overbought, momentum kuat</td>
+                  </tr>
+                  <tr>
+                    <td>MACD (12, 26, 9)</td>
+                    <td>145.2</td>
+                    <td class="text-buy">Beli Kuat</td>
+                    <td>MACD line crosses signal line up</td>
+                  </tr>
+                  <tr>
+                    <td>Bollinger Bands</td>
+                    <td>Upper: 68k</td>
+                    <td class="text-warning">Netral</td>
+                    <td>Harga dalam range wajar</td>
+                  </tr>
+                  <tr>
+                    <td>Moving Average (50)</td>
+                    <td>65,400</td>
+                    <td class="text-buy">Beli</td>
+                    <td>Harga di atas MA50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Analisis Sentimen -->
+        <div class="tab-panel" data-panel="sentimen">
+          <div class="ai-summary-row">
+            <div class="summary-card glass-panel" style="text-align: center">
+              <h3 style="color: var(--text-secondary); font-size: 0.9rem">
+                Fear & Greed Index
+              </h3>
+              <div class="card-value text-buy" style="font-size: 2.5rem">
+                75
+              </div>
+              <div class="card-sub">Greed</div>
+            </div>
+            <div class="summary-card glass-panel">
+              <div class="card-icon"><i class="fab fa-twitter"></i></div>
+              <div class="card-content">
+                <div class="card-label">Trending di Twitter</div>
+                <div class="card-value">#BitcoinATH</div>
+                <div class="card-sub">125k post dalam 1 jam</div>
+              </div>
+            </div>
+            <div class="summary-card glass-panel">
+              <div class="card-icon"><i class="fas fa-newspaper"></i></div>
+              <div class="card-content">
+                <div class="card-label">Volume Berita Positif</div>
+                <div class="card-value text-buy">68%</div>
+                <div class="card-sub">Didominasi berita ETF</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-section glass-panel" style="margin-top: 20px">
+            <div class="section-header">
+              <i class="fas fa-comments"></i>
+              <span>Analisis Buzz Media Sosial</span>
+            </div>
+            <div
+              style="
+                padding: 20px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+              "
+            >
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.05);
+                  padding: 15px;
+                  border-radius: 8px;
+                "
+              >
+                <h4>Top Keywords</h4>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  <span
+                    class="badge"
+                    style="background: var(--accent-color); color: black"
+                    >Bitcoin</span
+                  >
+                  <span
+                    class="badge"
+                    style="background: rgba(255, 255, 255, 0.1)"
+                    >Inflation</span
+                  >
+                  <span
+                    class="badge"
+                    style="background: rgba(255, 255, 255, 0.1)"
+                    >Fed Rate</span
+                  >
+                  <span class="badge" style="background: var(--buy-color)"
+                    >Bull Run</span
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.05);
+                  padding: 15px;
+                  border-radius: 8px;
+                "
+              >
+                <h4>Sumber Sentimen</h4>
+                <ul
+                  style="
+                    list-style: none;
+                    padding: 0;
+                    margin-top: 10px;
+                    color: var(--text-secondary);
+                  "
+                >
+                  <li
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span>Berita Utama</span>
+                    <span class="text-buy">Positif (60%)</span>
+                  </li>
+                  <li
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span>Twitter/X</span>
+                    <span class="text-buy">Sangat Positif (80%)</span>
+                  </li>
+                  <li style="display: flex; justify-content: space-between">
+                    <span>Reddit</span>
+                    <span class="text-warning">Netral (50%)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Pemindai Pasar -->
+        <div class="tab-panel" data-panel="scanner">
+          <div class="content-section glass-panel">
+            <div class="section-header">
+              <div class="header-left">
+                <i class="fas fa-search-dollar"></i>
+                <span>Pemindai Aset (Screener)</span>
+              </div>
+              <div class="header-actions">
+                <button class="btn-sm active">Top Gainers</button>
+                <button class="btn-sm">Top Volatility</button>
+                <button class="btn-sm">Oversold (RSI < 30)</button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ticker</th>
+                    <th>Harga</th>
+                    <th>Perubahan (24h)</th>
+                    <th>Volume</th>
+                    <th>Market Cap</th>
+                    <th>Sektor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>NVDA</b></td>
+                    <td>$890.20</td>
+                    <td class="text-buy">+4.5%</td>
+                    <td>$25B</td>
+                    <td>$2.2T</td>
+                    <td>Teknologi</td>
+                  </tr>
+                  <tr>
+                    <td><b>AGRO.JK</b></td>
+                    <td>340</td>
+                    <td class="text-buy">+12.4%</td>
+                    <td>150B IDR</td>
+                    <td>4T IDR</td>
+                    <td>Finance</td>
+                  </tr>
+                  <tr>
+                    <td><b>SOL-USD</b></td>
+                    <td>$145.20</td>
+                    <td class="text-buy">+8.2%</td>
+                    <td>$4B</td>
+                    <td>$65B</td>
+                    <td>Crypto</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Sinyal Trading -->
+        <div class="tab-panel" data-panel="sinyal">
+          <div class="section-header" style="margin-bottom: 20px">
+            <h1><i class="fas fa-robot"></i> Sinyal Trading Aktif</h1>
+            <p>Sinyal algoritmik berbasis AI dengan probabilitas tinggi</p>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+              gap: 20px;
+            "
+          >
+            <!-- Signal Card 1 -->
+            <div
+              class="glass-panel"
+              style="padding: 20px; border-left: 4px solid var(--buy-color)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: start;
+                  margin-bottom: 15px;
+                "
+              >
+                <div style="font-weight: bold; font-size: 1.2rem">
+                  BBCA
+                  <span style="font-size: 0.8rem; color: var(--text-secondary)"
+                    >IDX</span
+                  >
+                </div>
+                <div class="signal-badge strong-buy">LONG / BELI</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Entry</span>
+                <b>9,750 - 9,800</b>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Target 1</span>
+                <b class="text-buy">10,200</b>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Target 2</span>
+                <b class="text-buy">10,500</b>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 15px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Stop Loss</span>
+                <b class="text-sell">9,500</b>
+              </div>
+              <div class="confidence-bar" style="margin-bottom: 5px">
+                <div class="confidence-fill high" style="width: 88%"></div>
+              </div>
+              <div
+                style="
+                  text-align: right;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+              >
+                Probabilitas: 88%
+              </div>
+            </div>
+
+            <!-- Signal Card 2 -->
+            <div
+              class="glass-panel"
+              style="padding: 20px; border-left: 4px solid var(--sell-color)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: start;
+                  margin-bottom: 15px;
+                "
+              >
+                <div style="font-weight: bold; font-size: 1.2rem">
+                  TSLA
+                  <span style="font-size: 0.8rem; color: var(--text-secondary)"
+                    >NASDAQ</span
+                  >
+                </div>
+                <div class="signal-badge sell">SHORT / JUAL</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Entry</span>
+                <b>175.50</b>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 8px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Target</span>
+                <b class="text-buy">160.00</b>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 15px;
+                "
+              >
+                <span style="color: var(--text-secondary)">Stop Loss</span>
+                <b class="text-sell">182.00</b>
+              </div>
+              <div class="confidence-bar" style="margin-bottom: 5px">
+                <div class="confidence-fill medium" style="width: 65%"></div>
+              </div>
+              <div
+                style="
+                  text-align: right;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+              >
+                Probabilitas: 65%
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="pages.js"></script>
+    `r`n
+    <script src="interactions.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuItems = document.querySelectorAll(".sidebar-menu .menu-item");
+        const tabPanels = document.querySelectorAll(".tab-panel");
+
+        menuItems.forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Remove active class from all items
+            menuItems.forEach((i) => i.classList.remove("active"));
+            // Add active class to clicked item
+            item.classList.add("active");
+
+            // Hide all panels
+            tabPanels.forEach((panel) => panel.classList.remove("active"));
+
+            // Show target panel
+            const target = item.getAttribute("data-tab");
+            const targetPanel = document.querySelector(
+              `.tab-panel[data-panel="${target}"]`,
+            );
+            if (targetPanel) {
+              targetPanel.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
