@@ -34,7 +34,7 @@ export default function MarketsPage() {
 
   const fetchStocks = async () => {
     setLoading(true)
-    const response = await api.getStocks(searchQuery)
+    const response = await api.getStocks<Stock[]>(searchQuery)
     if (response.data) {
       setStocks(response.data)
     }

@@ -7,6 +7,7 @@ interface ApiResponse<T> {
   errors?: Record<string, string[]>;
   access_token?: string;
   token_type?: string;
+  [key: string]: any; // Allow for other top-level fields
 }
 
 class ApiClient {
@@ -32,7 +33,7 @@ class ApiClient {
     }
   }
 
-  private async request<T>(
+  private async request<T = any>(
     endpoint: string,
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
@@ -94,7 +95,7 @@ class ApiClient {
 
   // Wallet
   async getWalletBalance() {
-    return this.request('/wallet/balance');
+    return this.request<{ balance: number }>('/wallet/balance');
   }
 
   async deposit(amount: number) {
@@ -112,17 +113,17 @@ class ApiClient {
   }
 
   // Stocks
-  async getStocks(search?: string) {
+  async getStocks<T = any>(search?: string) {
     const params = search ? `?search=${encodeURIComponent(search)}` : '';
-    return this.request(`/stocks${params}`);
+    return this.request<T>(`/stocks${params}`);
   }
 
-  async getStock(id: number) {
-    return this.request(`/stocks/${id}`);
+  async getStock<T = any>(id: number) {
+    return this.request<T>(`/stocks/${id}`);
   }
 
-  async getStockHistory(id: number, interval = '1d', limit = 100) {
-    return this.request(`/stocks/${id}/history?interval=${interval}&limit=${limit}`);
+  async getStockHistory<T = any>(id: number, interval = '1d', limit = 100) {
+    return this.request<T>(`/stocks/${id}/history?interval=${interval}&limit=${limit}`);
   }
 
   async getMarketSummary() {
@@ -130,8 +131,8 @@ class ApiClient {
   }
 
   // Orders
-  async getOrders() {
-    return this.request('/orders');
+  async getOrders<T = any>() {
+    return this.request<T>('/orders');
   }
 
   async placeOrder(stockId: number, type: 'buy' | 'sell', quantity: number, price: number, orderType = 'market') {
@@ -149,6 +150,14 @@ class ApiClient {
 
   async cancelOrder(orderId: number) {
     return this.request(`/orders/${orderId}/cancel`, { method: 'POST' });
+  }
+
+  // AI Co-Pilot
+  async coPilotChat(message: string) {
+    return this.request<{ reply: string }>('/copilot/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message }),
+    });
   }
 }
 

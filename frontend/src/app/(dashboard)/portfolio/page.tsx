@@ -28,8 +28,8 @@ export default function PortfolioPage() {
   const fetchData = async () => {
     // Fetch wallet balance
     const walletRes = await api.getWalletBalance()
-    if (walletRes.balance) {
-      setWalletBalance(walletRes.balance)
+    if (walletRes.data?.balance !== undefined) {
+      setWalletBalance(walletRes.data.balance)
     }
 
     // Mock positions (in a real app, this would come from an API)
