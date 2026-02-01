@@ -12,6 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Trades-X // Executive Command Center",
+  description: "Advanced AI Trading Intelligence & Risk Management",
+};
 
 export default function RootLayout({
   children,
